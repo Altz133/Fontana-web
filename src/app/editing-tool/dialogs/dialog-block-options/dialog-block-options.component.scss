@@ -1,0 +1,20 @@
+@import "src/styles/mixin-basics";
+@import "src/styles/config";
+
+.container{
+
+  .color-box {
+    @include width-height(5rem, 5rem);
+  }
+
+  .config-info {
+    margin-left: $DEFAULT_PAGE_MARGIN_LOWER;
+  }
+
+  .button{
+    width: 100%;
+    @include flex(row,center,center)
+  }
+
+}
+

@@ -1,0 +1,131 @@
+@import "src/app/shared/style/images-paths";
+@import "src/styles/config";
+@import "src/styles/mixin-wrappers";
+@import "src/styles/mixin-layouts";
+@import "src/styles/mixin-basics";
+
+.blocks-container {
+  @include background-water-img;
+  @include width-height($MAIN-CONTENT-WIDTH, 100%);
+
+  .container {
+    @include main-content-wrapper;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 2rem 2rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "lg lg lg pg pg pg pg"
+    "lg lg lg pg pg pg pg"
+    "lg lg lg pg pg pg pg"
+    "lg lg lg btn pd pd pd"
+    "ld ld ld ld pd pd pd"
+    "ld ld ld ld pd pd pd"
+    "ld ld ld ld pd pd pd";
+
+    .lg {
+      grid-area: lg;
+    }
+
+    .pg {
+      grid-area: pg;
+    }
+
+    .pd {
+      grid-area: pd;
+    }
+
+    .ld {
+      grid-area: ld;
+    }
+
+    .material-symbols-outlined {
+      color: black;
+      font-size: 3rem;
+    }
+
+    .live-control-action-button {
+      @include width-height(7rem, 7rem);
+      @include flex(row, center, center);
+
+      position: relative;
+      margin: auto;
+
+      .fountain-with-authority,
+      .fountain-without-authority {
+        @include width-height(7rem, 7rem);
+
+        margin: auto;
+        background-color: $LIGHT_BLUE;
+        border-radius: 5rem;
+      }
+
+      .fountain-with-authority {
+        transition: all 0.15s ease;
+
+        &:hover {
+          @include width-height(7rem, 7rem);
+
+          box-shadow: 0 0 24px -8px rgba(0, 0, 0, 4);
+          backdrop-filter: blur(24px) saturate(100%);
+          cursor: pointer;
+          background-color: $LIGHT_BLUE_HOVER;
+          transform: translateY(-3%);
+        }
+      }
+
+      .fountain-without-authority {
+        opacity: $LOW_TRANSPARENCY;
+      }
+    }
+
+    .card-container {
+      @include width-height(100%, 100%);
+      @include glass-style;
+      @include flex(column,none,none);
+
+      padding: $DEFAULT_PAGE_PADDING_LOWER;
+
+      .content{
+        flex-grow: 1;
+        padding-top: $DEFAULT_PAGE_PADDING_LOWER;
+      }
+    }
+  }
+}
+.live-control-action-button-mobile {
+  @include width-height(100vw, 100vh);
+  @include flex(row, center, center);
+
+  position: relative;
+  margin: auto;
+
+  .fountain-with-authority,
+  .fountain-without-authority {
+    @include width-height(30rem, 30rem);
+
+    margin: auto;
+    background-color: $LIGHT_BLUE;
+    border-radius: 100%;
+  }
+
+  .fountain-with-authority {
+    transition: all 0.15s ease;
+
+    &:hover {
+      @include width-height(30rem, 30rem);
+
+      box-shadow: 0 0 24px -8px rgba(0, 0, 0, 4);
+      backdrop-filter: blur(24px) saturate(100%);
+      cursor: pointer;
+      background-color: $LIGHT_BLUE_HOVER;
+      transform: translateY(-3%);
+    }
+  }
+
+  .fountain-without-authority {
+    opacity: $LOW_TRANSPARENCY;
+  }
+}

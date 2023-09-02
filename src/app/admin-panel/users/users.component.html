@@ -1,0 +1,33 @@
+<div class="user-head">
+  <div class="table-header">Name</div>
+  <div class="table-header">Username</div>
+  <div class="table-header">Role</div>
+</div>
+<mat-form-field class="user-select">
+  <mat-label>Select User</mat-label>
+  <mat-select (selectionChange)="onUserChange($event.value)">
+    <mat-option value="">All</mat-option>
+    <mat-option *ngFor="let user of allUsers" [value]="user.username">{{ user.firstName }} {{ user.lastName }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<div *ngIf="selectedUser">
+  <div>Name: {{ selectedUser.firstName }} {{ selectedUser.lastName }}</div>
+  <div>Username: {{ selectedUser.username }}</div>
+  <div>Role: {{ selectedUser.role.name }}</div>
+</div>
+<table class="users-table">
+  <tbody>
+  <tr *ngFor="let user of users" class="user-row">
+    <td>{{ user.firstName }} {{ user.lastName }}</td>
+    <td>{{ user.username }}</td>
+    <td>
+      <mat-form-field class="role-select">
+        <mat-label>Role</mat-label>
+        <mat-select [value]="user.role.name" (selectionChange)="updateUserRole(user.username, $event.value)">
+          <mat-option *ngFor="let role of roles" [value]="role.name">{{ role.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </tr>
+  </tbody>
+</table>

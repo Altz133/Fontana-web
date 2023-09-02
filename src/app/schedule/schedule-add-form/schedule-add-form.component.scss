@@ -1,0 +1,154 @@
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+@import "src/styles/config";
+
+.container {
+  font-family: 'Oswald', sans-serif;
+  @include width-height(100%, 100%);
+  .left {
+
+    @include width-height(50%, 100%);
+    float: left;
+
+    form {
+
+      #scheduleName {
+        padding-bottom: $DEFAULT_PAGE_PADDING_LOWER;
+      }
+
+      .form-field {
+        margin: $DEFAULT_PAGE_MARGIN_LOWER;
+        margin-bottom: -1.25em !important;
+
+      }
+
+      .mat-form {
+        @include width-height(100%, 100%);
+      }
+
+      .form-field-time {
+
+        width: 100%;
+        display: flex;
+
+        .mat-form-time {
+
+          @include margin-left-right($DEFAULT_PAGE_MARGIN_LOWER, $DEFAULT_PAGE_MARGIN_LOWER);
+
+          width: 50%;
+
+        }
+      }
+
+      .checkbox-wrapper {
+
+        @include margin-left-right($DEFAULT_PAGE_MARGIN_LOWER, $DEFAULT_PAGE_MARGIN_LOWER);
+        display: flex;
+        align-items: center;
+
+      }
+
+      button {
+
+        margin-top: $DEFAULT_PAGE_MARGIN_LOWER+1rem;
+        margin-left: 25%;
+        @include width-height(50%, 2rem);
+
+      }
+
+      .foreverRecurring {
+        @include margin-left-right($DEFAULT_PAGE_MARGIN_LOWER, $DEFAULT_PAGE_MARGIN_LOWER);
+
+      }
+    }
+  }
+
+  .right {
+    @include width-height(50%, 100%);
+    float: left;
+
+    .form-field{
+      @include width-height(100%, 100%);
+    }
+
+    .mat-form {
+      margin-top: $DEFAULT_PAGE_MARGIN_LOWER;
+      margin-bottom: $DEFAULT_PAGE_MARGIN_LOWER;
+      padding-right: $DEFAULT_PAGE_PADDING_LOWER;
+      @include width-height(100%, auto);
+
+    }
+
+    .cards {
+      @include flex(column, left, none);
+      @include width-height(96%, 55%);
+      overflow: scroll;
+      margin-top: -10%;
+
+      .cardNotSelected {
+
+        color: $GREY-FONT-COLOR;
+        background-color: $LIGHT_GRAY;
+        margin-top: $DEFAULT_PAGE_MARGIN_LOWER;
+        padding: $DEFAULT_PAGE_PADDING_LOWEST;
+        border-radius: $PAGE_RADIUS_LOWEST;
+
+        &:hover {
+          background-color: rgba($LIGHT_BLUE, 0.4);
+          cursor: pointer;
+        }
+
+        .card{
+          @include width-height(100%,20%);
+        }
+      }
+
+      .cardSelected {
+
+        color: $GREY-FONT-COLOR;
+        background-color: rgba($LIGHT_BLUE, 0.4);
+        margin-top: $DEFAULT_PAGE_MARGIN_LOWER;
+        padding: $DEFAULT_PAGE_PADDING_LOWEST;
+        border-radius: $PAGE_RADIUS_LOWEST;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .form-field {
+      .arrowFooter {
+        @include arrow-footer;
+        width: 100%;
+        height: 3rem;
+
+        //margin-top: auto;
+
+        .arrowContainer {
+          @include width-height(2rem, 3rem);
+          @include flex(row, center, center)
+        }
+      }
+    }
+
+    .templatesSequence {
+      @include width-height(100%, auto);
+      @include flex(row, start, center);
+
+      margin-top: $DEFAULT_PAGE_MARGIN_LOWER;
+
+      .arrowsStyle {
+        @include width-height(auto, auto);
+      }
+
+      .mat-form {
+        @include width-height(auto, auto);
+
+        margin: 0 ;
+
+        flex-grow: 1;
+      }
+    }
+  }
+}

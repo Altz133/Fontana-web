@@ -1,0 +1,115 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.main-container {
+  @include background-water-img;
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  height: 100vh;
+
+  .control {
+    grid-area: 1 / 1 / 6 / 3;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: $DEFAULT_PAGE_PADDING_LOWER;
+
+    app-mobile-view {
+      @include width-height(100%, 100%);
+
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+  }
+
+  .editing-tool-container {
+    grid-area: 1 / 3 / 6 / 8;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: $DEFAULT_PAGE_PADDING_LOWER;
+
+    .top-section {
+      flex: 1;
+      padding: $DEFAULT_PAGE_PADDING;
+      height: 50%;
+      width: 100%;
+
+      @include flex(column, center, space-between);
+
+      .top-top-section {
+        @include glass-style;
+
+        padding: 1rem;
+
+        .template-name {
+          width: 30rem;
+        }
+      }
+
+
+      .button-container {
+        @include flex(row, flex-start, space-around);
+        width: 100%;
+
+        .button-label-container {
+          @include flex(column, center, center);
+          text-align: center;
+
+          span {
+            margin-top: $DEFAULT_PAGE_MARGIN_LOWEST;
+            color: black;
+            font-size: $FONT_SIZE_SLIGHTLY_LARGER;
+            font-weight: bolder;
+            opacity: 0;
+            transition: background-color 0.15s ease;
+          }
+
+          &:hover {
+            span {
+              opacity: 0.8;
+            }
+          }
+
+          .option_buttons {
+            @include width-height(4.5rem, 4.5rem);
+            @include flex(row, center, center);
+
+            z-index: 500;
+            color: white;
+            background-color: $LIGHT_BLUE;
+            border: none;
+            border-radius: 100%;
+            margin-top: $DEFAULT_PAGE_MARGIN_LOWER;
+            font-size: $FONT_SIZE_XXXL;
+            text-align: center;
+            transition: background-color 0.15s ease;
+
+            &:hover {
+              background-color: rgba($LIGHT_BLUE, $LOW_TRANSPARENCY);
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .bottom-section {
+      @include glass-style;
+
+      height: 50%;
+      padding: $DEFAULT_PAGE_PADDING;
+      color: rgba(black, 1);
+
+    }
+  }
+}
+
+.template-name .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+.spinner{
+  @include configured-absolute-pos(0,0);
+}

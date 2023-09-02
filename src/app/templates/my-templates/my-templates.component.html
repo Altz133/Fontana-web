@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="message">
+    <span class="title">My templates</span>
+  </div>
+
+  <hr>
+
+  <div class="cards" *ngIf="cards.length != 0">
+    <app-template-card *ngFor="let card of cards" [card]="card" class="card" [delete]="true"></app-template-card>
+
+    <div class="arrowFooter" *ngIf="totalPages > 1">
+      <div class="arrowContainer">
+        <button (click)="getTemplates(page-1,pageSize)" class="custom-icon-color" mat-icon-button *ngIf="!first">
+          <mat-icon>arrow_backward</mat-icon>
+        </button>
+      </div>
+
+      <span class="pageIndex">{{ page + 1 }}</span>
+
+      <div class="arrowContainer">
+        <button (click)="getTemplates(page+1,pageSize)" class="custom-icon-color" mat-icon-button *ngIf="!last">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards" *ngIf="cards.length == 0">
+    No templates found
+  </div>
+</div>

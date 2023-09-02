@@ -1,0 +1,213 @@
+@import "src/app/shared/style/images-paths";
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.container {
+  @include flex(row, center, center);
+  @include width-height(100vw, 57.5vh);
+
+  overflow: hidden;
+
+  &.mobile-view {
+    @include width-height(100vw, 100vh);
+    @include flex(row, center, center);
+
+    transform: rotate(90deg) scale(0.8);
+    overflow: visible;
+  }
+
+  .fountain-container {
+    @include flex(row, center, center);
+    @include width-height($FOUNTAIN_CONTAINER_WIDTH, $FOUNTAIN_CONTAINER_HEIGHT);
+
+    position: relative;
+    background-color: white;
+    background-size: 20%;
+    border: $FOUNTAIN_BORDER solid black;
+    z-index: 0;
+
+    .bridge {
+      @include width-height(13rem, $FOUNTAIN_CONTAINER_HEIGHT);
+      @include configured-absolute-pos(-0.21rem, 15rem);
+
+      background-color: white;
+      background-repeat: repeat-y;
+      background-size: 100% auto;
+      z-index: 20;
+      border: $FOUNTAIN_BORDER solid black;
+    }
+
+    .pool {
+      @include width-height(77rem, 20rem);
+
+      position: relative;
+      border: $FOUNTAIN_BORDER solid black;
+      background: url($POOL_TEXTURE) repeat;
+      background-size: 100%;
+      z-index: 10;
+
+      .led-border {
+        position: relative;
+        z-index: 20;
+
+        .led-border-right, .led-border-left,
+        .led-white-left, .led-white-right {
+          border: $FOUNTAIN_BORDER dashed;
+          height: 19.6rem;
+          z-index: 20;
+        }
+
+        .led-border-right, .led-white-right {
+          @include configured-absolute-pos(0, 20rem);
+          width: 56.55rem;
+        }
+
+        .led-border-left, .led-white-left {
+          @include configured-absolute-pos(0, 0);
+          width: 17.5rem;
+        }
+
+        .led-white-left, .led-white-right {
+          border: 3px dashed white;
+          box-shadow: 0 0 1em white, inset 0 0 5em white;
+        }
+      }
+
+      .angle-jet-button-container {
+        @include configured-absolute-pos(-2.5rem, 38rem);
+
+        .angle-jet-button {
+          @include width-height(3.5rem, 2rem);
+
+          position: relative;
+          bottom: 3.2rem;
+        }
+      }
+
+      .button-container {
+        @include configured-absolute-pos(11rem, 50%);
+
+        z-index: 150;
+
+        .foam-jet-button {
+          background-image: url($FOAM_JET_ICON);
+          top: -1.75rem;
+        }
+
+        .vertical-jet-button, .foam-jet-button {
+          @include width-height(2rem, 2rem);
+
+          position: relative;
+        }
+
+        .angle-jet-button, .vertical-jet-button, .foam-jet-button {
+          z-index: 150;
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          outline: none;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .angle-jet-beam {
+          position: absolute;
+          top: -2.3rem;
+          right: 0;
+
+          height: 0.4rem;
+          background-color: rgba(0, 0, 139, 0.5);
+          opacity: $LOW_TRANSPARENCY;
+          transform: translateY(-50%);
+          z-index: 150;
+        }
+
+        #angleJet1 {
+          left: -2rem;
+        }
+
+        #angleJet2 {
+          left: 8.2rem;
+        }
+
+        #angleJet3 {
+          left: 18rem;
+        }
+
+        #angleJet4 {
+          left: 27.7rem;
+        }
+
+        #verticalJet1 {
+          left: -34.25rem;
+        }
+
+        #verticalJet2 {
+          left: 10rem;
+        }
+
+        #verticalJet3 {
+          left: 29.5rem;
+        }
+
+        #a-beam1 {
+          transform: translateX(-5.35rem);
+        }
+
+        #a-beam2 {
+          transform: translateX(5rem);
+        }
+
+        #a-beam3 {
+          transform: translateX(14.75rem);
+        }
+
+        #a-beam4 {
+          transform: translateX(24.5rem);
+        }
+
+        #foam1-jet {
+          left: -32.5rem;
+        }
+
+        #foam2-jet {
+          left: 11.65rem;
+        }
+
+        #foam3-jet {
+          left: 31.25rem;
+        }
+
+        #foam1-icon {
+          left: -31.35rem;
+        }
+
+        #foam2-icon {
+          left: 12.8rem;
+        }
+
+        #foam3-icon {
+          left: 32.4rem;
+        }
+
+        .foam-icon {
+          @include width-height(10rem, 9rem);
+          @include configured-absolute-pos(-4rem, 50%);
+
+          transform: translateX(-50%);
+          z-index: 15;
+        }
+
+        .enlarged-icon {
+          @include width-height(12rem, 10rem);
+        }
+
+        .enlarged-button {
+          @include width-height(3rem, 3rem);
+        }
+      }
+    }
+  }
+}
+

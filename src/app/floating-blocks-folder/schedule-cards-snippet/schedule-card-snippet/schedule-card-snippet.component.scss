@@ -1,0 +1,82 @@
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.cardContainer {
+  margin-top: 0.6rem;
+  @include width-height(100%, 100%);
+  @include flex(column, none, space-between);
+  @include glass-style();
+
+  img{
+    @include width-height($FONT_SIZE_SLIGHTLY_LARGER, $FONT_SIZE_SLIGHTLY_LARGER);
+  }
+
+  padding: $DEFAULT_PAGE_PADDING_LOWEST;
+
+  .upper{
+    flex-grow: 1;
+    @include flex(row,none,space-evenly);
+
+    .title{
+      width: 20%;
+      scrollbar-width: thin;
+    }
+
+    .username{
+      justify-self: end;
+      width: 60%;
+
+      #userIcon{
+        font-size: $FONT_SIZE_SLIGHTLY_LARGER;
+        @include width-height($FONT_SIZE_SLIGHTLY_LARGER, $FONT_SIZE_SLIGHTLY_LARGER);
+        position: relative;
+        margin-right: 0.2rem;
+        margin-left: 0.4rem;
+      }
+
+      #userText{
+        position: relative;
+        bottom: 0.2rem;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+      }
+    }
+
+    .star{
+      position: absolute;
+      left: 0.3rem;
+      color:$GREEN;
+      font-size: $FONT_SIZE_SLIGHTLY_LARGER;
+    }
+  }
+
+  .lower{
+    @include flex(row,none,space-around);
+    margin-left: 2rem;
+    flex-grow: 1;
+
+    .time {
+      width: 20%;
+      @include flex(row,center,none);
+      column-gap: 0.2rem;
+
+      font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+
+      .material-symbols-outlined {
+        font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+      }
+    }
+
+    .timeEnd{
+      width: 40%;
+      @include flex(row,center,none);
+      column-gap: 0.2rem;
+
+      font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+
+      .material-symbols-outlined {
+        font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+      }
+    }
+  }
+}

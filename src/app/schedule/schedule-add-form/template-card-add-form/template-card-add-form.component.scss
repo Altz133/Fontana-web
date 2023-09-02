@@ -1,0 +1,36 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/_mixin-layouts.scss";
+
+.container {
+  @include flex(column, center, space-between);
+  @include width-height(100%, 100%);
+  font-family: 'Roboto', sans-serif;
+
+  .title {
+    @include flex(row, center, space-between);
+    @include width-height(100%, 40%);
+    font-size: $FONT_SIZE_DEFAULT;
+
+    .starContainer {
+      @include flex(row, flex-end, center);
+      font-size: $FONT_SIZE_DEFAULT;
+    }
+  }
+
+  hr {
+    @include width-height(100%, 5%);
+
+    align-self: center;
+  }
+
+  .bottom {
+    @include flex(row, flex-end, space-evenly);
+    @include width-height(100%, 55%);
+
+    div {
+      @include flex(row, center, center);
+      @include width-height(100%, fit-content);
+    }
+  }
+}

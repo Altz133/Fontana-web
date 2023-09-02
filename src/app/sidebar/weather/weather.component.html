@@ -1,0 +1,18 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<p>Today's weather</p>
+<div
+  [style.background-image]="weatherService.isRaining ? 'url(' +'assets/sky/dark_sky.jpg' +')' : 'url('+ 'assets/sky/clear_sky.jpg'+')'"
+  class="weather-window">
+  <div class="small-info">
+    <div class="small-div"><span class="material-icons">water_drop</span> {{weatherService.humidity}}%</div>
+    <div class="small-div"><span class="material-icons">air</span> {{weatherService.windSpeed}}km/h</div>
+  </div>
+  <div class="big-info">
+    <div class="icon">
+      <span class="material-symbols-outlined">{{weatherService.isRaining ? 'rainy' : 'clear_day'}}</span>
+    </div>
+    <div class="temperature">{{weatherService.temperature}}°C</div>
+  </div>
+</div>

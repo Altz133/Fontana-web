@@ -1,0 +1,46 @@
+<div class="cardContainer">
+    <div class="upper">
+        <mat-icon class="star">{{ schedule?.enabled ? "circle" : "cancel" }}</mat-icon>
+
+        <span class="title">{{ schedule?.name }}</span>
+
+        <div class="username">
+          <mat-icon id="userIcon">account_circle</mat-icon>
+
+          <span id="userText">{{ schedule?.username }}</span>
+        </div>
+
+    </div>
+
+    <div class="lower">
+
+        <div class="time">
+          <img [src]="imagesPaths.ALARM_ON_ICON" id="clockIcon">
+          <span>{{ schedule?.startTime | date: 'HH:mm:ss' }}</span>
+        </div>
+
+        <div class="timeEnd">
+
+          <img [src]="imagesPaths.TIMELAPSE_ICON">
+
+          <div class="text">
+            <ng-container *ngIf="schedule?.repetitions === 0; else normalDisplay">
+              {{ midnightDuration() }}
+            </ng-container>
+            <ng-template #normalDisplay>
+              {{ Math.floor(Math.floor(((schedule?.length ??0) * (schedule?.repetitions ??0))  / 60 ) / 60) }} Hrs
+              {{ Math.floor(((schedule?.length ??0) * (schedule?.repetitions ??0))  / 60 ) }} Min
+              {{ ((schedule?.length ??0) *(schedule?.repetitions ??0)) % 60 }} Sec
+            </ng-template>
+
+          </div>
+
+      </div>
+
+      <div class="time">
+        <img [src]="imagesPaths.ALARM_OFF_ICON">
+        <span>{{ calculatedEndTime }}</span>
+      </div>
+
+</div>
+</div>

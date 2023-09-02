@@ -1,0 +1,16 @@
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30rem;
+  height: auto;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  button {
+    height: 2rem;
+    margin-top: 1rem;
+  }
+}

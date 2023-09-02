@@ -1,0 +1,10 @@
+<div class="container" *ngIf="cards.length != 0">
+  <div class="cardContainter">
+    <app-draft-card-snippet *ngFor="let card of cards" [card]="card" class="card"></app-draft-card-snippet>
+  </div>
+</div>
+
+
+<div class="notFound" style="justify-content: center" *ngIf="cards.length == 0">
+  No drafts found
+</div>

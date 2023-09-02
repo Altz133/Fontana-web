@@ -1,0 +1,65 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<div *ngIf="!mobileView"
+     class="blocks-container">
+  <div class="container">
+    <div class="card-container lg">
+      <card-bar [icon]="'calendar_month'" [name]="'UPCOMING'" [route]="'schedules'"></card-bar>
+
+      <hr>
+
+      <div class="content">
+        <app-schedule-cards-snippet></app-schedule-cards-snippet>
+      </div>
+    </div>
+
+    <div class="card-container pg">
+      <card-bar  [icon]="'extension'" [name]="'TEMPLATES'" [route]="'templates'"></card-bar>
+
+      <hr>
+
+      <div class="content">
+        <app-template-cards-snippet></app-template-cards-snippet>
+      </div>
+    </div>
+
+    <div class="card-container pd">
+      <card-bar [icon]="'view_timeline'" [name]="'EDITING TOOL'" [route]="'editingTool'"></card-bar>
+
+      <hr>
+
+      <div class="content">
+        <app-draft-cards-snippet></app-draft-cards-snippet>
+      </div>
+    </div>
+
+    <div class="card-container ld">
+      <card-bar [icon]="'tune'" [name]="'RECENT ACTIVITY'" *ngIf="hasAuthority" [route]="'/adminPanel'"></card-bar>
+
+      <hr>
+
+      <div class="content">
+        <app-recent-activity-snippet></app-recent-activity-snippet>
+      </div>
+    </div>
+
+    <div class="live-control-action-button btn">
+      <img
+        src="/assets/logo/fountain.svg"
+        alt="fountain"
+        [ngClass]="{ 'fountain-with-authority': hasAuthority, 'fountain-without-authority': !hasAuthority }"
+        [style.pointer-events]="hasAuthority ? 'auto' : 'none'" (click)="move()">
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mobileView"
+  class="live-control-action-button-mobile btn">
+  <img
+    src="/assets/logo/fountain.svg"
+    alt="fountain"
+    [ngClass]="{ 'fountain-with-authority': hasAuthority, 'fountain-without-authority': !hasAuthority }"
+    [style.pointer-events]="hasAuthority ? 'auto' : 'none'" (click)="move()">
+</div>

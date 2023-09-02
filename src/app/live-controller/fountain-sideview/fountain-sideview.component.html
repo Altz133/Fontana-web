@@ -1,0 +1,41 @@
+<div class="container">
+  <span class="text-container">Side View</span>
+  <div class="fountain-container">
+    <div class="pavement"></div>
+    <div class="jet-container">
+      <div class="jets-and-beams" id="jet-beam1">
+        <div class="jets" id="jet1"></div>
+        <div
+          [style.height.%]="beamLevel"
+          [style.background-color]="color1"
+          class="beam"
+             id="beam1" ></div>
+      </div>
+
+      <div class="jets-and-beams" id="jet-beam2">
+        <div class="jets" id="jet2"></div>
+        <div
+          [style.background-color]="color2"
+          [style.height.%]="beamLevel"
+          class="beam"
+          id="beam2"></div>
+      </div>
+
+      <div class="jets-and-beams" id="jet-beam3">
+        <div class="jets" id="jet3"></div>
+        <div
+          [style.background-color]="color3"
+          [style.height.%]="beamLevel"
+          class="beam"
+             id="beam3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="meter">
+    <div class="line">
+      <div>0.5m</div>
+      <div>1m</div>
+      <div>1.5m</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="notification-wrapper" (click)="openNotificationModal()">
+  <span class="material-icons bell-icon">notifications</span>
+  <div [ngClass]="hasNotifications ? 'orange-dot' : ''">
+    <span *ngIf="data?.amount !== undefined" class="notification-amount">{{ data.amount > 0 ? data.amount : ''}}</span>
+  </div>
+</div>
+

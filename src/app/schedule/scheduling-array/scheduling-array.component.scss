@@ -1,0 +1,248 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+::ng-deep .cdk-overlay-pane .menu {
+
+  max-width: none;
+  background-color: #e7ecef;
+  border-radius: $PAGE_RADIUS_DEFAULT;
+  padding: $DEFAULT_PAGE_PADDING_LOWEST;
+
+  .cell {
+
+    @include width-height(100%, 100%);
+    display: flex;
+    margin: 0.3rem;
+    column-gap: 0.3rem;
+
+    #cycleIcon {
+      margin-top: 0.02rem;
+    }
+  }
+
+  img {
+
+    margin-top: -0.2rem;
+    @include width-height(1.5rem, 1.5rem);
+
+  }
+}
+
+.container {
+
+  @include glass-style;
+  @include width-height(100%, 100%);
+  @include flex(column, center, normal);
+
+  padding: $DEFAULT_PAGE_PADDING_LOWER 0;
+
+  .bar {
+    @include width-height(100%, 5rem);
+
+    color: $GREY-FONT-COLOR;
+    font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+    font-family: 'Oswald', sans-serif;
+
+    .date {
+      @include flex(row, center, center);
+      @include width-height(100%, 100%);
+      @include container-title-msg;
+
+      .addButton {
+
+        width: 30%;
+
+        .addButtonIcon {
+
+          margin-left: 2rem;
+          font-family: 'Oswald', sans-serif;
+          color: #ffffff;
+          transition: 0.14s ease;
+          margin-right: 25%;
+
+          &:hover {
+
+            cursor: pointer;
+            background-color: $LIGHT_BLUE;
+            border-radius: 100%;
+          }
+        }
+      }
+
+      .dateText {
+        width: 70%;
+      }
+
+      .dateTextNoDate {
+        margin-left: 20%;
+        width: 100%;
+      }
+    }
+  }
+
+  .array {
+    @include width-height(95%, 76%);
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    margin-right: 2%;
+
+    .card {
+      @include flex(column, flex-start, center);
+      @include width-height(96%, 5rem);
+
+      padding: 0 $DEFAULT_PAGE_PADDING_LOWEST;
+      font-size: $FONT-SIZE_XL;
+
+      cursor: default;
+      /*
+      It doesn't work, neither the @include item-card;
+       */
+      background-color: rgba(255, 255, 255, 0);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      color: $GREY-FONT-COLOR;
+
+      font-family: 'Oswald', sans-serif;
+      transition: 0.14s ease;
+
+      mat-card-header {
+        @include width-height(100%, 50%);
+        @include flex(row, start, space-between);
+
+        .title {
+          font-size: $FONT_SIZE_DEFAULT;
+          width: 5rem;
+          height: 2rem;
+          overflow-y: hidden;
+          overflow-x: hidden;
+          scrollbar-width: thin;
+        }
+
+        #userIcon{
+          margin-right: -0.5rem;
+        }
+
+        .user {
+          scrollbar-width: thin;
+          height: 2rem;
+          margin-top: 0.35rem;
+          width: 3.5rem;
+          overflow-x: hidden;
+        }
+
+        .userNoAuth {
+          scrollbar-width: thin;
+          margin-top: 0.35rem;
+          width: 3.5rem;
+          margin-right: 11rem;
+          overflow-x: hidden;
+        }
+
+        .controlPanel {
+
+          .pauseIcon {
+            margin-left: 2rem;
+            @include configured-icon(1.5rem, 1.5rem, $STOP_ICON_ORANGE, 1.2)
+          }
+
+          .deleteIcon {
+            @include configured-icon(1.5rem, 1.5rem, $DELETE_ICON_RED, 1.2)
+          }
+
+          .editIconPlay {
+            @include configured-icon(1.5rem, 1.5rem, $LIGHT_BLUE, 1.2)
+          }
+
+          .editIconNoPlay {
+            margin-left: 3.7rem;
+            @include configured-icon(1.5rem, 1.5rem, $LIGHT_BLUE, 1.2)
+          }
+
+        }
+      }
+
+      mat-card-content {
+        @include width-height(100%, 50%);
+      }
+
+      .bottomIconsContainer {
+        font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+        font-family: 'Oswald', sans-serif;
+
+        @include flex(row, center, space-between);
+        @include width-height(100%, 100%);
+
+        .alarmOnContainer {
+          @include width-height(40%, 100%);
+        }
+
+        .alarmOffContainer {
+          @include width-height(45%, 100%);
+        }
+
+        .moreContainer {
+          @include width-height(15%, 100%);
+
+          &:hover {
+
+            color: rgba($LIGHT_PURPLE_MORE, 0.7);
+            border-radius: $PAGE_RADIUS_LOWEST;
+            cursor: pointer;
+
+          }
+
+        }
+
+      }
+
+      img {
+        @include width-height(1.2rem, 1.2rem);
+        top: 0.3rem;
+        position: relative;
+      }
+
+      span {
+        height: 2rem;
+        margin-left: $DEFAULT_PAGE_MARGIN_LOWEST;
+        font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+        font-family: 'Oswald', sans-serif;
+      }
+
+      &:hover {
+        color: $LIGHT_BLUE;
+      }
+
+    }
+
+    .card:last-child {
+      margin: 3%;
+      box-shadow: none;
+      background-color: white;
+      border-radius: $PAGE_RADIUS_DEFAULT;
+      background-color: rgba(255, 255, 255, 0.45);
+    }
+  }
+
+  .arrowFooter {
+    @include arrow-footer;
+
+    margin-top: auto;
+
+    .disableArrow {
+      opacity: 0.4;
+
+      &:hover {
+        cursor: default;
+      }
+
+    }
+
+    .arrowContainer {
+      @include width-height(2rem, auto);
+      @include flex(row, center, center)
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+<div
+  [style.background-color]="(weatherService.rainHeight < 2 && weatherService.windSpeed < 40 && weatherService.temperature >= 1) ? '#4ead52' : '#FFCC00'"
+  class="statusContainer">
+  <div class="icon"><span
+    class="material-symbols-outlined">{{(weatherService.rainHeight < 2 && weatherService.windSpeed < 40 && weatherService.temperature >= 1) ? 'sentiment_satisfied' : 'sentiment_dissatisfied'}}</span>
+  </div>
+  <div class="message">
+    {{(weatherService.rainHeight < 2 && weatherService.windSpeed < 40 && weatherService.temperature >= 1) ? "Weather seems appropriate for using fountain." : "Weather seems unappropriate for using fountain."}}
+  </div>
+</div>

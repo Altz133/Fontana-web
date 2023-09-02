@@ -1,0 +1,13 @@
+@import "src/styles/mixin-layouts.scss";
+@import "src/styles/mixin-wrappers.scss";
+
+.container {
+  @include width-height(100%, 100%);
+  .formField {
+    @include width-height(80%, 60%);
+  }
+  button {
+    margin-left: 30%;
+    width: 25%;
+  }
+}

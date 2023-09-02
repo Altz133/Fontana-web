@@ -1,0 +1,24 @@
+<div class="dialog-container">
+  <h2>Alert!</h2>
+  <div *ngIf="data.option === 'close'">
+    <p>You sure you wanna exit without saving?</p>
+    <mat-checkbox [(ngModel)]="saveAsDraft">Save as draft</mat-checkbox>
+  </div>
+  <div *ngIf="data.option === 'save'">
+    <p>Are you really finished?</p>
+  </div>
+  <div class="button-container">
+  <button
+    (click)="onNo()"
+    color="primary"
+    mat-raised-button>
+    No
+  </button>
+  <button
+    (click)="onYes()"
+    color="primary"
+    mat-raised-button>
+    Yes
+  </button>
+</div>
+</div>

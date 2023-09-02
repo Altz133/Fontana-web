@@ -1,0 +1,82 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.table-container {
+  align-content: start;
+  position: relative;
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.logs-header {
+  @include flex(row, center, space-between);
+  @include width-height(100%, 2rem);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  height: 3rem;
+  text-align: center;
+  border: 1px solid $LIGHT_GRAY;
+  font-weight: bold;
+
+
+  .table-header {
+    flex: 1;
+    text-align: center;
+    font-size: $FONT_SIZE_DEFAULT;
+    color: $DARK_BLUE;
+    border-bottom: none;
+  }
+}
+
+.logs-container {
+  width: 100%;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    align-content: start;
+
+    tbody {
+      tr {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        &:hover {
+          background-color: $HOVER_BLUE;
+        }
+
+        td {
+          border-bottom: 1px solid $LIGHT_GRAY;
+          padding: $DEFAULT_PAGE_PADDING_LOWEST;
+          vertical-align: middle;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  @include width-height(100%, 2rem);
+  @include flex(row, center, center);
+
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.pagination-arrow {
+  cursor: pointer;
+}
+
+.download {
+  margin-bottom: 0.5rem;
+}
+
+
+
+

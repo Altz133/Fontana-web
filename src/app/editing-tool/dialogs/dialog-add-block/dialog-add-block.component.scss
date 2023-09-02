@@ -1,0 +1,16 @@
+@import "src/styles/mixin-basics";
+
+.block-add-dialog {
+  @include flex(column, center, center);
+
+  height: 100%;
+
+  .form-container {
+    @include flex(column, center, center);
+  }
+
+  .mat-dialog-actions {
+    justify-content: center;
+  }
+}
+

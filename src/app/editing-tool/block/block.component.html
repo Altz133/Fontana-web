@@ -1,0 +1,28 @@
+<div
+  [style.background-color]="backgroundColor"
+  [style.width.rem]="width"
+  (mousedown)="onMouseDown()"
+  class="block">
+  <div class="icons-container">
+    <mat-icon
+      (click)="deleteBlock()"
+      class="icon"
+      id="close">
+      close
+    </mat-icon>
+
+    <mat-icon
+      (click)="openDialog()"
+      class="icon"
+      id="info">
+      info
+    </mat-icon>
+
+    <mat-icon
+      (click)="copyBlock()"
+      class="icon"
+      id="copy">
+      file_copy
+    </mat-icon>
+  </div>
+</div >

@@ -1,0 +1,202 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.loading-container {
+  @include flex(column, center, center);
+  @include width-height(100vw, 100vh);
+
+  background-color: $ALMOST_WHITE_BLUE;
+
+  .white-screen {
+    @include flex(row, center, center);
+    @include width-height(8rem, 8rem);
+
+    position: relative;
+    background-color: white;
+    animation: pulse 1.5s infinite alternate;
+    border-radius: 50%;
+
+    .bottom-jet {
+      @include width-height(2rem, 2rem);
+      @include configured-absolute-pos(85%, calc(50% - 1rem));
+
+      z-index: 20;
+      border-radius: $PAGE_RADIUS_LOWEST;
+      background-color: $ALMOST_WHITE_BLUE;
+    }
+
+    .water-animation-right {
+      @include configured-absolute-pos(85%, calc(50% - 0.4rem));
+      @include width-height(0.8rem, 0.8rem);
+
+      z-index: 10;
+      background-color: $CARD_BLUE;
+      border-radius: 50%;
+      animation: water-flow-right 1.2s ease-out infinite;
+    }
+
+    .water-animation-left {
+      @include configured-absolute-pos(85%, calc(50% - 0.4rem));
+      @include width-height(0.8rem, 0.8rem);
+
+      z-index: 10;
+      background-color: $CARD_BLUE;
+      border-radius: 50%;
+      animation: water-flow-left 1.2s ease-out infinite;
+      animation-delay: 0.4s;
+    }
+
+    .water-animation-top {
+      @include configured-absolute-pos(85%, calc(50% - 0.4rem));
+      @include width-height(0.8rem, 0.8rem);
+
+      z-index: 10;
+      background-color: $CARD_BLUE;
+      border-radius: 50%;
+      animation: water-flow-top 1.2s ease-out infinite;
+      animation-delay: 0.8s;
+    }
+  }
+
+  .loading-bar {
+    @include width-height(15rem, 1rem);
+
+    margin-top: $DEFAULT_PAGE_MARGIN;
+    background-color: $CARD_BLUE;
+    border-radius: $PAGE_RADIUS_LOWER;
+    outline: 0.15rem solid white;
+    overflow: hidden;
+
+    .progress {
+      @include width-height(100%, 100%);
+
+      border-radius: $PAGE_RADIUS_LOWER;
+      background-color: $FOUNTAIN_BLUE;
+      outline: 0.15rem solid white;
+      animation: loading-progress 3s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes water-flow-left {
+  0% {
+    transform: translateY(0%) translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-300%) translateX(-0.1rem);
+    opacity: 0.9;
+  }
+  35% {
+    transform: translateY(-400%) translateX(-0.25rem);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translateY(-450%) translateX(-0.5rem);
+    opacity: 0.6;
+  }
+  65% {
+    transform: translateY(-475%) translateX(-0.8rem);
+    opacity: 0.45;
+  }
+  75% {
+    transform: translateY(-495%) translateX(-1.15rem);
+    opacity: 0.3;
+  }
+  85% {
+    transform: translateY(-510%) translateX(-1.5rem);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(-520%) translateX(-2rem);
+    opacity: 0;
+  }
+}
+
+@keyframes water-flow-right {
+  0% {
+    transform: translateY(0%) translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-300%) translateX(0.1rem);
+    opacity: 0.9;
+  }
+  35% {
+    transform: translateY(-400%) translateX(0.25rem);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translateY(-450%) translateX(0.5rem);
+    opacity: 0.6;
+  }
+  65% {
+    transform: translateY(-475%) translateX(0.8rem);
+    opacity: 0.45;
+  }
+  75% {
+    transform: translateY(-495%) translateX(1.15rem);
+    opacity: 0.3;
+  }
+  85% {
+    transform: translateY(-510%) translateX(1.5rem);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(-520%) translateX(2rem);
+    opacity: 0;
+  }
+}
+
+@keyframes water-flow-top {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-400%);
+    opacity: 0.9;
+  }
+  35% {
+    transform: translateY(-500%);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translateY(-550%);
+    opacity: 0.6;
+  }
+  65% {
+    transform: translateY(-575%);
+    opacity: 0.45;
+  }
+  75% {
+    transform: translateY(-595%);
+    opacity: 0.3;
+  }
+  85% {
+    transform: translateY(-610%);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(-620%);
+    opacity: 0;
+  }
+}
+
+@keyframes loading-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}

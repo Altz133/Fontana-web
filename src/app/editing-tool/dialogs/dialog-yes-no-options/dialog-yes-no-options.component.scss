@@ -1,0 +1,15 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.dialog-container {
+  height: 100%;
+  overflow: hidden;
+  padding: $DEFAULT_PAGE_PADDING_LOWER;
+  @include flex(column, center, center);
+
+  .button-container {
+    margin: $DEFAULT_PAGE_MARGIN_LOWER;
+    @include flex(row, center, space-between);
+    width: 70%;
+  }
+}

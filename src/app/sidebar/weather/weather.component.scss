@@ -1,0 +1,58 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.weather-window {
+  @include flex(column, center, center);
+
+  margin-bottom: $DEFAULT_PAGE_MARGIN_LOWEST;
+  box-shadow: 0 0 24px -8px rgba(0,0,0,4);
+  backdrop-filter: blur(24px) saturate(100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: white;
+
+  .small-info {
+    @include width-height(100%, 3.5rem);
+    @include flex(row, center, center);
+
+    background-color: $LIGHT_BLUE;
+
+    .small-div {
+      @include flex(row, center, center);
+
+      gap: 0.35rem;
+      font-size: 1rem;
+
+      &:first-child {
+        width: 40%;
+      }
+
+      &:last-child {
+        width: 60%;
+      }
+    }
+  }
+
+  .big-info {
+    @include width-height(100%, 7rem);
+    @include flex(row, flex-end, flex-start);
+
+    padding: $DEFAULT_PAGE_PADDING_LOWER;
+    gap: $DEFAULT_PAGE_PADDING_LOWER;
+
+    .material-symbols-outlined {
+      font-size: $FONT_SIZE_PAGE_TITLE_SMALLER;
+    }
+
+    .temperature {
+      font-size: $FONT_SIZE_LARGER;
+      font-weight: bolder;
+      letter-spacing: 2px;
+      transform: translateY(-55%);
+    }
+  }
+}
+
+p {
+  font-weight: bolder;
+}

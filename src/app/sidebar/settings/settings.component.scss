@@ -1,0 +1,12 @@
+@import "src/styles/config";
+@import "src/styles/mixin-layouts";
+
+.material-icons{
+  transition: all 0.15s ease;
+
+  &:hover{
+    color: $NOTIFICATION_BELL_BLUE;
+    transform: translateY(-5%);
+    cursor: pointer;
+  }
+}

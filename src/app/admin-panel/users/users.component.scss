@@ -1,0 +1,75 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.table-container {
+  position: relative;
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.user-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  height: 3rem;
+  text-align: center;
+  border: 1px solid $LIGHT_GRAY;
+  font-weight: bold;
+
+  .table-header {
+    flex: 1;
+    text-align: center;
+    font-size: $FONT_SIZE_LARGER;
+    color: $DARK_BLUE;
+    border-bottom: none;
+  }
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+
+  .user-row {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    &:hover {
+      background-color: $HOVER_BLUE;
+    }
+
+    td {
+      border-bottom: 1px solid $LIGHT_GRAY;
+      padding: $DEFAULT_PAGE_PADDING_LOWEST;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+}
+.user-select {
+  position: sticky;
+  top: 3rem;  /* Wysokość .user-head plus ewentualne dodatkowe paddingi */
+  z-index: 1;
+  padding-right: 20px;
+}
+.role-select {
+  width: 100%;
+  height: 100%; // Make the mat-select full height
+  display: flex;
+  align-items: center; // Center the mat-select vertically
+  justify-content: center; // Center the mat-select horizontally
+
+  mat-select {
+    width: 100%;
+  }
+
+  .mat-option {
+    display: flex;
+    align-items: center;
+    width: 100%;// Center the mat-option text vertically
+  }
+}

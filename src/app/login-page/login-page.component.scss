@@ -1,0 +1,119 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.bodyWrapper {
+  @include width-height(100%, 100%);
+
+  overflow: hidden;
+  background-repeat: no-repeat;
+
+  .title {
+    @include configured-absolute-pos(0, 50%);
+
+    font-family: 'Oswald', sans-serif;
+    transform: translateX(-50%);
+    margin: 4rem 0 0 1.16rem;
+    font-size: $FONT_SIZE_PAGE_TITLE;
+    color: white;
+
+    .rightTitle {
+      opacity: 1;
+      background-image: url("/assets/login/budynek1.png");
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      transition: opacity 0.3s ease-in-out;
+      background-size: 100vw 100vh;
+      background-position: left 50vw top;
+    }
+  }
+
+  .backgroundImage {
+    .imageContainer {
+      @include width-height(100vh, 100vw);
+
+      transition: opacity 0.3s ease-in-out;
+
+      img {
+        @include width-height(100vw, 100vh);
+
+        background-repeat: no-repeat;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .rightPanel {
+    @include configured-absolute-pos(0, 50%);
+    @include flex(column, center, center);
+    @include width-height(50%, 100%);
+
+    background-color: white;
+
+    .formLayout {
+      @include flex(column, center, center);
+
+      font-family: 'Oswald', sans-serif;
+      max-width: 15rem;
+      min-width: 6rem;
+      width: 60%;
+
+      #submitButton{
+        color: white;
+        background-color: $LIGHT_BLUE_LOGIN;
+      }
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    .logo {
+      @include width-height(3rem, 3rem);
+
+      position: absolute;
+      left: calc(50% - 1.5rem);
+      top: calc(100% - 2rem);
+
+      transform: translateY(-100%);
+    }
+
+    .on-submit-spinner {
+      @include configured-absolute-pos(22.5%,calc(50% - 1.5rem));
+      @include width-height(3rem, 3rem);
+    }
+  }
+
+  .errorField {
+    @include width-height(60%, 3rem);
+
+    margin-top: $DEFAULT_PAGE_MARGIN_LOWER;
+    font-size: $FONT_SIZE_SLIGHTLY_LARGER;
+    font-family: 'Oswald', sans-serif;
+    color: red;
+    text-align: center;
+  }
+}
+
+@media (max-width: 550px) {
+  .bodyWrapper {
+
+    .title {
+      transform: translateX(-54%);
+      margin: 1.5rem 0 0 1.16rem;
+      font-size: $FONT_SIZE_PAGE_TITLE_SMALLER;
+    }
+
+    .backgroundImage {
+      .imageContainer {
+        @include width-height(100vw, 100vh);
+
+        transition: opacity 0.3s ease-in-out;
+
+        img {
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
+

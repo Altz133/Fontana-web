@@ -1,0 +1,135 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: $DEFAULT_PAGE_PADDING_LOWER;
+  height: 100%;
+
+  .text-container {
+    position: absolute;
+    font-size: $FONT_SIZE_DEFAULT;
+    opacity: 0.6;
+  }
+
+  .fountain-container {
+    @include width-height(100%, 100%);
+
+    position: relative;
+
+    .pavement {
+      @include width-height(100%, 1rem);
+
+      background-color: black;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .jet-container {
+      @include width-height(100%, 90%);
+
+      position: absolute;
+      bottom: 1rem;
+      display: flex;
+      padding: 0 $DEFAULT_PAGE_PADDING_LOWER;
+
+      .jets-and-beams {
+        @include width-height(1rem, 100%);
+
+        position: relative;
+        bottom: 0;
+        overflow: visible;
+        z-index: 2;
+
+        .jets {
+          @include width-height(1rem, 0.5rem);
+
+          position: absolute;
+          bottom: 0%;
+          background-color: gray;
+        }
+      }
+
+      #jet-beam1 {
+        margin-left: 5%;
+      }
+
+      #jet-beam2 {
+        margin-left: 50%;
+      }
+
+      #jet-beam3 {
+        margin-left: 20%;
+      }
+
+      .beam {
+        @include width-height(0.5rem, 100%);
+
+        position: absolute;
+        bottom: 0.4rem;
+        transform: translateX(50%);
+        background-color: blue;
+        opacity: 0.6;
+        z-index: 1;
+      }
+    }
+  }
+
+  .meter {
+    @include flex(column, flex-end, center);
+
+    position: relative;
+    height: 90%;
+
+    .line {
+      @include width-height(0.1rem, 100%);
+
+      background-color: black;
+      position: relative;
+    }
+
+    .line::before,
+    .line::after,
+    .line div {
+      @include width-height(3rem, 0.05rem);
+
+      position: absolute;
+      left: -2.6em;
+      background-color: black;
+    }
+
+    .line::before {
+      top: 0;
+      content: "2m";
+      bottom: 100%;
+      transform: translateY(100%);
+    }
+
+    .line::after {
+      bottom: 0;
+      content: "0m";
+      top: 100%;
+      transform: translateY(-100%);
+    }
+
+    .line div:nth-child(1) {
+      top: 75%;
+      transform: translateY(-50%);
+    }
+
+    .line div:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .line div:nth-child(3) {
+      bottom: 75%;
+      transform: translateY(50%);
+    }
+  }
+}
+
+
+
+

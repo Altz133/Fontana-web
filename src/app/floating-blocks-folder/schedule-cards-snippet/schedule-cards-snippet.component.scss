@@ -1,0 +1,14 @@
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.container{
+
+  .card-container{
+    @include width-height(100%, 1%);
+  }
+}
+
+.notFound{
+  @include width-height(100%,100%);
+  @include flex(row,center,center);
+}

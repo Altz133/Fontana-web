@@ -1,0 +1,65 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/_mixin-layouts.scss";
+
+.container {
+  @include flex(column, center, space-between);
+  @include width-height(100%, 100%);
+
+  .title {
+    @include flex(row, center, space-between);
+    @include width-height(100%, 40%);
+
+    margin-left: 0.5rem;
+    font-size: $FONT_SIZE_DEFAULT;
+    font-weight: 500;
+
+    span{
+      @include flex(row,center,center);
+      img {
+        @include width-height(1.5rem, 1.5rem);
+        margin-right: 0.5rem;
+      }
+      .deleteIcon {
+        @include configured-icon(1.5rem, 1.5rem, $DELETE_ICON_RED, 1.2)
+      }
+    }
+  }
+
+  .PUBLIC, .PRIVATE, .DRAFT {
+    @include width-height(100%, 5%);
+    border: none;
+
+    align-self: center;
+  }
+
+  .PUBLIC {
+    background-color: $GREEN;
+  }
+
+  .PRIVATE {
+    background-color: $RED;
+  }
+
+  .DRAFT {
+    background-color: $ORANGE;
+  }
+
+  .bottom {
+    @include flex(row, flex-end, space-between);
+    @include width-height(100%, 55%);
+
+
+    div {
+      @include flex(row, center, center);
+    }
+
+    .smallContainer {
+      @include width-height(25%, fit-content);
+    }
+
+    .bigContainer {
+      @include width-height(50%, fit-content);
+    }
+  }
+}

@@ -1,0 +1,164 @@
+<div class ="container">
+  <div class = "left">
+<form #myForm="ngForm">
+
+  <div class="form-field" id="scheduleName">
+
+    <mat-form-field class = "mat-form">
+      <input matInput placeholder="Schedule name"
+             [(ngModel)]="name"
+             name="name"
+             maxlength="8"
+             required>
+      <mat-label>Enter the Schedule name</mat-label>
+    </mat-form-field>
+
+  </div>
+
+  <div class="form-field-time" >
+
+    <mat-form-field class = "mat-form-time" floatLabel="always">
+      <input matInput
+             [min]="minDate"
+             [matDatepicker]="startDatePicker"
+             [(ngModel)]="startDate"
+             (ngModelChange)="updateDefaultEndTime()"
+             placeholder="Starting Date"
+             name="startDate"
+             required>
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+      <mat-label>Starting date</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class = "mat-form-time" floatLabel="always">
+      <input matInput  placeholder="Repetitions" name="repetitions"
+             type="number" min="1"
+             [(ngModel)]="repetitions"
+             [disabled]="loopsThroughTheDay"
+             (ngModelChange)="calculateEndTime(0)"
+             [required]="!loopsThroughTheDay">
+      <mat-label>Repetitions</mat-label>
+    </mat-form-field>
+
+  </div>
+
+  <div class="form-field-time" >
+
+    <mat-form-field class = "mat-form-time">
+      <input matInput type="time"
+             step="1"
+             placeholder="Starting time"
+             [(ngModel)]="startTime"
+             (ngModelChange)="calculateEndTime(0)"
+             name="startTime" required>
+      <mat-label>Enter starting time</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class = "mat-form-time" floatLabel="always" >
+      <input matInput name="endTime" readonly [(ngModel)]="calculatedEndTime"
+             [disabled]="loopsThroughTheDay">
+      <mat-label>Calculated end time</mat-label>
+    </mat-form-field>
+  </div>
+
+  <div class="checkbox-wrapper">
+  <div class="checkbox">
+
+    <mat-checkbox color="primary" name="isRecurring" [(ngModel)]="isRecurring">Cyclic</mat-checkbox>
+  </div>
+
+  <div class="checkbox">
+    <mat-checkbox color="primary" name="isLoopy" [(ngModel)]="loopsThroughTheDay">Loop the entire day</mat-checkbox>
+  </div>
+
+    <div class="checkbox">
+      <mat-checkbox color="primary" name="isEnabled" [(ngModel)]="isEnabled" >Enabled</mat-checkbox>
+    </div>
+
+  </div>
+
+  <div class="foreverRecurring"  *ngIf="isRecurring">
+    <mat-checkbox color="primary" name="isRecurringForever"
+                  [(ngModel)]="isRecurringForever" >
+      Never expire cycle
+    </mat-checkbox>
+  </div>
+
+  <div class="form-field" *ngIf="!isRecurringForever && isRecurring">
+
+    <mat-form-field class = "mat-form">
+      <input matInput
+             [min]="minDate"
+             [matDatepicker]="endDatePicker"
+             [(ngModel)]="endDate"
+             placeholder="Ending Date"
+             name="endDate"
+      required>
+      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+      <mat-label>Enter the expiration date of your schedule</mat-label>
+    </mat-form-field>
+
+  </div>
+
+  <div class="form-field" *ngIf="isRecurring">
+    <mat-chip-listbox aria-label="Day selection" [(ngModel)]="selectedDays" multiple required>
+      <mat-chip-option *ngFor="let day of ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']"
+                       [value]="day"
+                       [selected]="isSelectedDay(day)"
+                       (click)="addDay(day)">
+        {{ day }}
+      </mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+
+  <button id="submitButton" mat-raised-button color="primary"
+          [disabled]="!myForm.valid || selectedDays.length == 0
+          && isRecurring || templateIds .length == 0"
+          (click)="submitForm()">Submit</button>
+</form></div>
+  <div class="right">
+    <div class="form-field">
+
+      <mat-form-field class = "mat-form">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Template name" (input)="search()" #searchName>
+        <mat-label>Search for templates</mat-label>
+      </mat-form-field>
+
+      <div class="cards">
+      <app-template-card-add-form *ngFor="let card of cards" [card]="card" class="card"
+                                  [ngClass]="{ 'cardSelected': isSelectedCard(card.id), 'cardNotSelected': !isSelectedCard(card.id) }"
+                                  (click)="choseCard(card.name, card.id, card.length)"></app-template-card-add-form>
+      </div>
+
+      <div class="arrowFooter" *ngIf="totalPages > 1">
+          <div class="arrowContainer">
+            <button (click)="getTemplates(page-1,pageSize)" class="custom-icon-color" mat-icon-button *ngIf="!first">
+              <mat-icon>arrow_backward</mat-icon>
+            </button>
+          </div>
+
+          <span class="pageIndex">{{ page + 1 }}</span>
+
+          <div class="arrowContainer">
+            <button (click)="getTemplates(page+1,pageSize)" class="custom-icon-color" mat-icon-button *ngIf="!last">
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </div>
+      </div>
+
+    <div class="templatesSequence">
+      <button (click)="clearTemplates()" class="arrowsStyle" mat-icon-button>
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <mat-form-field class="mat-form" id="templateNames">
+        <input matInput name="templateNames" readonly [value]="templateNames.join(', ')" required>
+        <mat-label>Chosen templates</mat-label>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+</div>

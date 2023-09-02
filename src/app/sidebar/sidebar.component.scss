@@ -1,0 +1,66 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.container {
+  @include flex(column, center, center);
+  @include width-height($SIDEBAR_WIDTH, 100%);
+
+  font-family: 'Inter', sans-serif;
+  row-gap: $DEFAULT_PAGE_PADDING;
+  padding: $DEFAULT_PAGE_PADDING;
+  background-color: white;
+  box-shadow: 6px 0 12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px) saturate(100%);
+
+  .upper-container {
+    @include flex(row, center, space-between);
+
+    width: 100%;
+
+    app-hello {
+      @include flex(column, flex-start, space-between);
+    }
+
+    app-notifications {
+      position: relative;
+      cursor: pointer;
+    }
+  }
+
+  .weather-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .panic-container {
+    @include flex(row, center, center);
+
+    cursor: pointer;
+  }
+
+  .bottom-container {
+    @include flex(row, center, flex-end);
+
+    width: 100%;
+    position: relative;
+    margin-top: auto;
+
+    .logoNCDC {
+      @include width-height(6rem, 2.4rem);
+
+      position: absolute;
+      left: calc(50% - 3rem);
+      top: calc(100% - $DEFAULT_PAGE_MARGIN);
+    }
+
+    app-settings {
+     @include flex(row, center, flex-end);
+    }
+  }
+}
+
+.material-icons {
+  font-size: $FONT_SIZE_XXL;
+  opacity: $LOW_TRANSPARENCY;
+}

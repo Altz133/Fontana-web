@@ -1,0 +1,30 @@
+@import "src/styles/config";
+@import "src/styles/mixin-wrappers";
+@import "src/styles/mixin-layouts";
+
+.container {
+  @include page-container;
+
+  .main {
+    @include main-wrapper;
+
+    display: flex;
+    flex-direction: row;
+
+    .templates-container {
+      @include main-content-wrapper;
+      @include background-water-img;
+      @include flex(row, center, center);
+
+      gap: $DEFAULT_PAGE_PADDING;
+
+      .my-templates {
+        @include width-height(40%, 100%);
+      }
+
+      .template-list {
+        @include width-height(60%, 100%);
+      }
+    }
+  }
+}

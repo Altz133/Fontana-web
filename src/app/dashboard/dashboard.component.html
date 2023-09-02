@@ -1,0 +1,12 @@
+<div *ngIf="!mobileView" class="container">
+  <app-navbar></app-navbar>
+  <div class="main">
+    <app-sidebar></app-sidebar>
+    <app-floating-blocks></app-floating-blocks>
+  </div>
+</div>
+<div *ngIf="mobileView"
+     class="mobile-view-dash">
+  <app-floating-blocks></app-floating-blocks>
+</div>
+

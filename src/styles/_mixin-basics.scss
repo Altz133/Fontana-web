@@ -1,0 +1,39 @@
+@import "src/styles/config";
+
+@mixin width-height($width-with-unit, $height-with-unit) {
+  width: $width-with-unit;
+  height: $height-with-unit;
+}
+
+@mixin flex($flex-direction, $align, $justify) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin configured-absolute-pos($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin configured-icon($width, $height, $color, $transform-scale) {
+
+  border-radius: 100%;
+  transition: transform 0.3s ease;
+
+  img{
+    @include width-height($width,$height);
+  }
+
+  &:hover{
+    background-color: $color;
+    transform: scale($transform-scale);
+    cursor: pointer;
+  }
+
+  &:active{
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,23 @@
+<div *ngIf="!isRedirecting" [class.mobile-view]="isMobileView" [class.pc-view]="!isMobileView" class="live-controller">
+  <div *ngIf="!isMobileView" class="pc-view">
+    <button (click)="exit()"
+            class="back-button">
+      <mat-icon class="back-icon">arrow_back</mat-icon>
+    </button>
+
+    <div class="upper-section">
+      <app-fountain></app-fountain>
+    </div>
+
+    <div class="bottom-section">
+      <app-configuration-panel class="configuration"></app-configuration-panel>
+      <app-fountain-sideview class="sideview"></app-fountain-sideview>
+    </div>
+  </div>
+
+  <div *ngIf="isMobileView" class="mobile-view">
+    <app-mobile-view></app-mobile-view>
+  </div>
+</div>
+
+<app-loading-screen *ngIf="isRedirecting"></app-loading-screen>

@@ -1,0 +1,58 @@
+@use "@angular/material" as mat;
+@import '@angular/material/theming';
+@import "src/styles/config";
+
+@include mat-core();
+
+$custom-primary: mat-palette($mat-blue, 500, 100, 800);
+$custom-accent: mat-palette($mat-pink, A200, A100, A400);
+$custom-warn: mat-palette($mat-red);
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+
+@include angular-material-theme($custom-theme);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+
+  @media screen and (min-width: $FLUID_TYPOGRAPHY_DEFAULT_BREAKPOINT) and (orientation: landscape) {
+    font-size: 1vw;
+  }
+}
+
+body {
+  height: 100vh;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $HOVER_BLUE;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

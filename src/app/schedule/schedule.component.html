@@ -1,0 +1,14 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="main">
+    <app-sidebar></app-sidebar>
+    <div class="calendar-wrapper">
+      <mat-card class="inline-calendar">
+        <mat-calendar #calendar [(selected)]="selectedDate" class="inlineCalendarContent">
+          <mat-calendar-header #calendarHeader></mat-calendar-header>
+        </mat-calendar>
+      </mat-card>
+      <app-scheduling-array [selectedDateArray]="selectedDate" class="calendar-array"></app-scheduling-array>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div *ngIf="hasAuthority">
+  <div class="container">
+    <app-navbar></app-navbar>
+    <div class="main">
+      <app-sidebar></app-sidebar>
+      <div class="main-right">
+        <div class="tab-container">
+          <mat-tab-group>
+            <mat-tab label="Logs">
+              <div class="tab-content">
+                <app-logs></app-logs>
+              </div>
+            </mat-tab>
+            <mat-tab label="Users">
+              <div class="tab-content">
+                <app-users></app-users>
+              </div>
+            </mat-tab>
+            <mat-tab label="Config">
+              <div class="tab-content">
+                <app-config></app-config>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

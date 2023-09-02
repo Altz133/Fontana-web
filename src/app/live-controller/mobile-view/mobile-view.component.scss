@@ -1,0 +1,171 @@
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+@import "src/styles/config";
+
+.mobile-container {
+  @include glass-style;
+
+  height: 100%;
+  overflow-y: scroll;
+
+  .fountain-container {
+    overflow: hidden;
+    @include width-height(100%, 65rem);
+    @include flex(column, center, center);
+    margin-left: auto;
+    margin-right: auto;
+
+    .fountain-view {
+      @include width-height(100%, 100%);
+      @include flex(column, center, center);
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .pump1-slider {
+    @include flex(column, center, center);
+
+    font-size: $FONT_SIZE_XL;
+    margin-top: $DEFAULT_PAGE_MARGIN;
+
+    #pump1-slider {
+      width: 20rem;
+    }
+  }
+
+  .sideview-container {
+    @include width-height(100%, 60vh);
+
+    overflow: visible;
+  }
+
+  .vertical-jets-container {
+    @include flex(column, center, center);
+
+    .switches {
+      @include flex(row, center, space-between);
+
+      transform: translateX(-40%);
+      width: 70%;
+    }
+
+    .sideview-container {
+      @include width-height(100%, 60vh);
+
+      overflow: visible;
+    }
+
+
+    .pump2-slider {
+      @include flex(column, center, center);
+
+      font-size: $FONT_SIZE_XL;
+      margin-top: $DEFAULT_PAGE_MARGIN;
+
+      #pump2-slider {
+        width: 20rem;
+      }
+    }
+  }
+
+  .strip-options {
+    height: 15rem;
+    padding: $DEFAULT_PAGE_PADDING_LOWER;
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      margin-left: $DEFAULT_PAGE_MARGIN_LOWER;
+      margin-top: 0.4rem;
+      font-weight: normal;
+      text-align: left;
+    }
+
+    input[type="checkbox"] {
+      @include width-height(2rem, 2rem);
+
+      margin-left: 1vw;
+      background-color: $LIGHT_BLUE;
+    }
+
+    .color-picker {
+
+      input[type="color"], #color-picker {
+        @include width-height(80%, 9rem);
+      }
+    }
+
+    #stroboscope-frequency {
+      width: 80%;
+    }
+
+    #led-power-slider, #white-brightness-slider {
+      left: 1vw;
+      width: 70%;
+      cursor: pointer;
+    }
+  }
+
+  .color-picker-container {
+    @include flex(column, center, center);
+
+    height: 15rem;
+    padding: $DEFAULT_PAGE_PADDING_LOWER;
+    text-align: center;
+
+    input[type="color"] {
+      @include width-height(7rem, 7rem);
+    }
+
+    .custom-switch {
+      margin-top: 1rem;
+      position: sticky;
+      transform: translateX(-50%);
+    }
+  }
+
+}
+
+.custom-switch {
+  @include width-height(5.85rem, 3.225rem); // 3.9rem * 1.5 i 2.15rem * 1.5
+
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 20%);
+}
+
+.custom-switch input {
+  @include width-height(0, 0);
+
+  opacity: 0;
+}
+
+.slider {
+  @include configured-absolute-pos(0, 0);
+
+  cursor: pointer;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  transition: .4s;
+  border-radius: 51px; // 34px * 1.5
+}
+
+.slider:before {
+  @include configured-absolute-pos(0.3rem, 0.375rem);
+  @include width-height(2.55rem, 2.55rem);
+  content: "";
+  bottom: 0.375rem;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: $LIGHT_BLUE;
+}
+
+input:checked + .slider:before {
+  transform: translateX(2.55rem);
+}

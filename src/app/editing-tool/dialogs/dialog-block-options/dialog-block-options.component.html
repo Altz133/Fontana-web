@@ -1,0 +1,89 @@
+<div class="container">
+<h2 mat-dialog-title>Block Data</h2>
+<mat-dialog-content>
+  <h3 class="config-info">
+    <b>Duration: </b>
+    {{data.block.duration /4}} Sec</h3>
+
+  <h2><b>Devices:</b></h2>
+  <br>
+
+  <h3><b>Jets:</b></h3>
+
+  <div *ngFor="let jet of sortedJets" class="config-info">
+
+    <p><b>Name:</b> {{ getDeviceName(jet.name) }}</p>
+
+    <p><b>Value:</b> {{ onOff(jet.value) }}</p>
+
+    <br>
+  </div>
+
+
+  <h3><b>Pumps:</b></h3>
+
+  <div *ngFor="let pump of data.block.devices.pumps"
+       class="config-info">
+
+    <p><b>Name:</b>
+      {{getDeviceName(pump.name)}}</p>
+
+    <p><b>Value:</b>
+      {{pump.value}}</p>
+
+    <br>
+  </div>
+
+  <h3><b>LedStrip:</b></h3>
+
+  <div class="config-info">
+    <p><b>Name:</b>
+      {{getDeviceName(data.block.devices.leds.name)}}</p>
+
+    <p><b>Color:</b></p>
+
+    <div [style.background-color]="getRgbColorLED(data.block.devices.leds)"
+         class="color-box"></div>
+
+  </div>
+  <br>
+
+  <h3><b>Foams:</b></h3>
+
+  <div *ngFor="let foam of data.block.devices.foams"
+       class="config-info">
+
+    <p><b>Name:</b>
+      {{getDeviceName(foam.name)}}</p>
+
+    <p><b>Value:</b>
+      {{onOff(foam.value)}}</p>
+
+    <br>
+  </div>
+
+  <h3><b>Circural lights:</b></h3>
+
+  <div *ngFor="let light of data.block.devices.lights"
+       class="config-info">
+
+    <p><b>Name:</b>
+      {{getDeviceName(light.name)}}</p>
+
+    <p><b>Color:</b></p>
+
+    <div [style.background-color]="getRgbColor(light)"
+         class="color-box"></div>
+
+    <br>
+  </div>
+
+</mat-dialog-content>
+
+<div class="button">
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>
+
+</div>

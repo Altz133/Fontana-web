@@ -1,0 +1,28 @@
+<div (cdkDropListDropped)="drop($event)"
+     cdkDropList
+     cdkDropListOrientation="horizontal"
+     class="timeline-container">
+  <div *ngFor="let t of ticks"
+       class="tick">
+    <div [class]="t.class">
+      <span *ngIf="t.second !== null"
+            class="second-label">
+        {{ t.second + 0.25 }}
+      </span>
+    </div>
+  </div>
+
+  <div class="blocks-list">
+    <app-block
+      (mousedown)="onMouseDown()"
+      *ngFor="let block of blocks"
+      [index]="block.index"
+      [isCopy]="block.isCopy"
+      [width]="block.width"
+      cdkDrag
+      class="single-block">
+      <div *cdkDragPlaceholder
+           class="example-custom-placeholder"></div>
+    </app-block>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+@import "src/styles/config";
+@import "src/styles/_mixin-basics.scss";
+
+nav {
+  @include flex(row, center, space-between);
+
+  background-color: $DARK_BLUE;
+  padding: $DEFAULT_PAGE_PADDING;
+  height: $NAVBAR_HEIGHT;
+  width: auto;
+
+  .title {
+    font-family: 'Oswald', sans-serif;
+    font-size: $FONT_SIZE_XXXL;
+    margin-top: $DEFAULT_PAGE_MARGIN_LOWEST;
+    color: white;
+    transition: all 0.15s ease;
+    letter-spacing: 0.2rem;
+  }
+
+  .title:hover {
+    cursor: pointer;
+    color: $HOVER_BLUE;
+    transform: translateY(-5%);
+  }
+
+  .right {
+    @include flex(row, center, flex-end);
+
+    column-gap: 3rem;
+
+
+    .navigation-links {
+      @include flex(row, center, center);
+
+      gap: 3.5rem;
+
+      .navElement {
+        @include flex(column, center, center);
+
+        height: 100%;
+        font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+        font-weight: lighter;
+        color: white;
+        transition: all 0.15s ease;
+
+        &:hover {
+          color: $HOVER_BLUE;
+          transform: translateY(-5%);
+        }
+      }
+
+      .material-icons {
+        font-size: $FONT_SIZE_XXL;
+      }
+
+      .menu-container {
+
+        .menu-icon {
+          font-size: $FONT-SIZE_XL;
+          color: white;
+        }
+
+        mat-menu .material-icons {
+          color: white;
+        }
+
+        mat-menu {
+          padding: 2rem;
+          background-color: $DARK_BLUE;
+        }
+
+        mat-menu mat-menu-item {
+          color: white;
+        }
+
+      }
+    }
+
+    .logout {
+      @include flex(column, center, center);
+
+      height: 100%;
+      font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+      font-weight: lighter;
+      color: white;
+      transition: all 0.15s ease;
+      margin-left: 6rem;
+
+      &:hover {
+        color: $HOVER_BLUE;
+        transform: translateY(-5%);
+      }
+
+      .material-icons {
+        font-size: $FONT_SIZE_XL;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+p {
+  margin: 0;
+  font-size: $FONT_SIZE_SLIGHTLY_SMALLER;
+  font-weight: lighter;
+  opacity: 0.9;
+}
+
+img {
+  width: 13.2em;
+  height: 2em;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: white;
+
+  .mat-mdc-button.mat-unthemed {
+    --mdc-text-button-label-text-color: #fff;
+  }
+}
+
+.mat-mdc-button > .mat-icon {
+  font-size: 1.75rem;
+  height: 1.75rem;
+  width: 1.75rem;
+}

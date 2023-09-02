@@ -1,0 +1,48 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.notification-wrapper {
+  position: relative;
+
+   .orange-dot {
+    @include configured-absolute-pos(50%, -10%);
+    @include width-height(1.2rem, 1.2rem);
+    @include flex(row, center, center);
+
+    transition: all 0.15s ease;
+    border-radius: 50%;
+
+    .notification-amount {
+      color: white;
+      font-size: 0.7rem;
+    }
+  }
+
+  .orange-dot {
+    background-color: $NOTIFICATION_ORANGE_DOT;
+  }
+
+  .bell-icon {
+    transition: all 0.15s ease;
+
+    &:hover{
+      color: $NOTIFICATION_BELL_BLUE;
+      cursor: pointer;
+
+      animation: ring 0.5s ease infinite;
+    }
+  }
+}
+
+@keyframes ring {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+
+
+

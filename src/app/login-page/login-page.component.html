@@ -1,0 +1,42 @@
+<div *ngIf="!isRedirecting" class="bodyWrapper">
+  <div class="backgroundImage">
+    <div class="imageContainer">
+      <img [src]=imageSource alt="">
+    </div>
+    <div class="rightPanel" fxFlex="50" fxLayout="column" fxLayoutAlign="center center">
+      <app-loading-spinner *ngIf="isLoading" class="on-submit-spinner"></app-loading-spinner>
+      <form (ngSubmit)="onSubmit()"
+            [formGroup]="registerForm"
+            class="formLayout"
+            fxLayout="column"
+            fxLayoutAlign="center stretch">
+        <mat-form-field appearance="fill">
+          <mat-label>Login</mat-label>
+          <input formControlName="login" matInput type="login">
+          <mat-error *ngIf="f['login'].errors && formError == FormErrors.NONE">Login is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput type="password">
+          <mat-error *ngIf="f['password'].errors && formError == FormErrors.NONE">Password is required</mat-error>
+        </mat-form-field>
+
+        <button id="submitButton" mat-raised-button type="submit">Sign in</button>
+      </form>
+      <div class="errorField">
+        <div>{{errorMessage}}</div>
+      </div>
+      <div>
+        <img [src]="imagePaths.NCDC_LOGO" alt="NCDC" class="logo">
+      </div>
+    </div>
+  </div>
+  <h1 class="title">
+    <span class="leftTitle">FOИ</span>
+    <span class="rightTitle">TAИA</span>
+  </h1>
+</div>
+
+<app-loading-screen *ngIf="isRedirecting"></app-loading-screen>
+

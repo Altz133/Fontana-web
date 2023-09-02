@@ -1,0 +1,14 @@
+@import "src/styles/config";
+@import "src/styles/mixin-wrappers";
+
+.container {
+  @include page-container;
+
+  .main {
+    @include main-wrapper;
+  }
+}
+.mobile-view-dash{
+  @include flex(column,center,center);
+  @include width-height(100vw,100vh)
+}

@@ -1,0 +1,64 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+@import "src/styles/mixin-wrappers";
+
+.container {
+  @include page-container;
+
+  .main {
+    @include main-wrapper;
+
+    .calendar-wrapper {
+      @include flex(row, center, center);
+      @include background-water-img;
+
+      width: calc(100vw - $SIDEBAR_WIDTH);
+      height: calc(100vh - $NAVBAR_HEIGHT);
+      padding: $DEFAULT_PAGE_PADDING;
+      gap: $DEFAULT_PAGE_PADDING;
+
+      .inline-calendar {
+        @include width-height(60%, 100%);
+        @include flex(row, flex-start, center);
+
+        ::ng-deep .special-date {
+          background-color: $SPECIAL_DATE_COLOR;
+          border-radius: 100%;
+        }
+
+        border-radius: $PAGE_RADIUS_DEFAULT;
+        background-color: rgba(255, 255, 255, 0.6);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        backdrop-filter: blur(24px) saturate(180%);
+        box-shadow: 0 0 24px -8px rgba(0, 0, 0, 4);
+        color: rgba(0, 0, 0, 0.68);
+
+        /* Increase the font size of day numbers */
+        .mat-calendar .mat-calendar-body-cell-content {
+          font-size: 10rem;
+        }
+
+        /* Increase the height of each day cell */
+        .mat-calendar .mat-calendar-body-cell {
+          height: 4rem;
+        }
+
+        /* Increase the height of the calendar header */
+        .mat-calendar .mat-calendar-header {
+          height: 5rem;
+        }
+
+        /* Increase the width of the calendar */
+        .mat-calendar {
+          width: 90%;
+        }
+      }
+    }
+
+    .calendar-array {
+      @include flex(column, flex-start, center);
+      @include width-height(50%, 100%);
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.redirecting-bar {
+  @include configured-absolute-pos($NAVBAR_HEIGHT,0);
+  @include width-height(100vw, 0.25rem);
+
+  background-color: $ALMOST_WHITE_BLUE;
+  z-index: 100;
+
+  .thumb {
+    @include width-height(30rem, inherit);
+
+    background-color: $CARD_BLUE;
+    animation: slideAnimation 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}

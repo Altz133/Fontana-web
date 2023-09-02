@@ -1,0 +1,10 @@
+<div class="container" *ngIf="cards.length != 0">
+  <div class="cardContainter">
+    <app-template-card-snippet *ngFor="let card of cards" [card]="card" class="card"></app-template-card-snippet>
+  </div>
+</div>
+
+
+<div class="notFound" style="justify-content: center" *ngIf="cards.length == 0">
+  No templates found
+</div>

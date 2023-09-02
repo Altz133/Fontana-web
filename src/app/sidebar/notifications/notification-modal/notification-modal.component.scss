@@ -1,0 +1,127 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.modal-wrapper {
+  @include flex(column, center, flex-start);
+  @include width-height(100%, 100%);
+
+  padding: $DEFAULT_PAGE_PADDING_LOWER;
+
+  .sessions-header {
+    @include flex(row, center, space-between);
+    @include width-height(100%, 3rem);
+
+    :first-child {
+      font-size: $FONT-SIZE_SLIGHTLY_LARGER;
+    }
+  }
+
+  .loading-spinner {
+    margin-top: 8rem;
+  }
+
+  .empty-list-msg {
+    margin-top: 9rem;
+  }
+
+  .session-list {
+    @include flex(column, left, flex-start);
+    @include width-height(100%, 78%);
+
+    margin-top: $DEFAULT_PAGE_MARGIN_LOWEST;
+    gap: $DEFAULT_PAGE_PADDING_LOWEST;
+    overflow: auto;
+
+    .session-item {
+      @include flex(column, left, center);
+      @include width-height(100%, fit-content);
+
+      position: relative;
+      background-color: $LIGHT_GRAY;
+      border-radius: $PAGE_RADIUS_LOWER;
+      padding: $DEFAULT_PAGE_PADDING_LOWEST;
+
+      .session-top {
+        @include flex(row, center, space-between);
+        @include width-height(100%, 2rem);
+
+        .session-info {
+          @include flex(row,center, flex-start);
+          @include width-height(45%, inherit);
+
+          gap: $DEFAULT_PAGE_PADDING_LOWEST;
+
+          .user-icon {
+            opacity: $LOW_TRANSPARENCY;
+          }
+
+          :nth-child(2) {
+            transform: translateY(0.4rem);
+          }
+        }
+
+        .logs-amount {
+          @include flex(row, center, flex-start);
+          @include width-height(55%, 2rem);
+
+          gap: $DEFAULT_PAGE_PADDING_LOWEST;
+
+          .actions {
+            @include flex(row, center, center);
+
+            gap: $DEFAULT_PAGE_PADDING_LOWEST;
+
+            .action-icon {
+              opacity: $LOW_TRANSPARENCY;
+            }
+          }
+
+          :nth-child(2) {
+            transform: translateY(0.4rem);
+          }
+        }
+      }
+
+      .session-bottom {
+        @include flex(row,center, space-between);
+
+        .session-time {
+          @include flex(row,center, flex-start);
+
+          gap: $DEFAULT_PAGE_PADDING_LOWEST;
+
+          :nth-child(2) {
+            transform: translateY(0.4rem);
+          }
+        }
+
+        .opened {
+          @include width-height(45%, inherit);
+        }
+
+        .closed {
+          @include width-height(55%, inherit);
+        }
+      }
+
+      .mark-as-watched-button {
+        @include configured-absolute-pos(calc(50% - 0.75rem), 90%);
+
+        transform: scale(1.25);
+        border: none;
+        outline: none;
+        background: none;
+        cursor: pointer;
+        opacity: $LOW_TRANSPARENCY;
+        color: $LIGHT_BLUE;
+
+        transition: color 0.15s ease;
+
+        &:hover {
+          color: $CARD_BLUE;
+        }
+      }
+    }
+  }
+}

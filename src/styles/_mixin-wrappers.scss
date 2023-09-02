@@ -1,0 +1,26 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+@mixin page-container {
+  @include flex(column, space-between, center);
+  @include width-height(100vw, 100vh);
+
+  overflow: hidden;
+  opacity: 1;
+}
+
+@mixin main-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  height: calc(100vh - $NAVBAR_HEIGHT);
+  width: 100vw;
+}
+
+@mixin main-content-wrapper {
+  @include width-height(100%, 100%);
+
+  padding: $DEFAULT_PAGE_PADDING;
+}
+
+

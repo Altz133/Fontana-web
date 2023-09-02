@@ -1,0 +1,9 @@
+<div class="container" *ngIf="schedules.length != 0">
+    <div class="cardContainer">
+        <app-schedule-card-snippet *ngFor="let schedule of schedules" [schedule]="schedule" class="card"></app-schedule-card-snippet>
+    </div>
+</div>
+
+<div class="notFound" style="justify-content: center" *ngIf="schedules.length == 0">
+    No schedules found
+</div>

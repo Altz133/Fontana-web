@@ -1,0 +1,78 @@
+<div (mouseup)="onMouseUp()"
+     class="main-container">
+  <app-mobile-view
+    class="control">
+  </app-mobile-view>
+
+  <div class="editing-tool-container">
+    <div class="top-section">
+      <div class="top-top-section">
+        <mat-form-field appearance="outline"
+                        class="template-name">
+          <mat-label>Template Name</mat-label>
+          <input [formControl]="templateName" matInput
+                 maxlength="60">
+          <mat-error *ngIf="templateName.touched && templateName.invalid">
+            Please enter a template name.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="button-container">
+        <div class="button-label-container">
+          <span>Back</span>
+
+          <mat-icon (click)="back()"
+                    class="option_buttons">
+            arrow_back
+
+          </mat-icon>
+        </div>
+
+        <div class="button-label-container">
+          <span>Add</span>
+
+          <mat-icon (click)="openAddBlockDialog()"
+                    class="option_buttons">
+            add
+          </mat-icon>
+        </div>
+        <div class="button-label-container">
+          <span>Play</span>
+
+          <mat-icon (click)="play()"
+                    class="option_buttons">
+            play_arrow
+          </mat-icon>
+        </div>
+
+        <div class="button-label-container">
+          <span>Toggle Visibility</span>
+
+          <mat-icon (click)="toggleVisibility()"
+                    class="option_buttons">
+            {{visibilityIcon}}
+          </mat-icon>
+        </div>
+
+        <div class="button-label-container">
+          <span>Save</span>
+
+          <mat-icon (click)="saveTemplate()"
+                    class="option_buttons">
+            save_alt
+          </mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-section">
+      <app-timeline></app-timeline>
+    </div>
+  </div>
+</div>
+
+<app-loading-spinner *ngIf="isLoading"
+                     class="spinner">
+
+</app-loading-spinner>
+<app-loading-screen *ngIf="isRedirecting"></app-loading-screen>

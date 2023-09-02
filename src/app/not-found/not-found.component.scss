@@ -1,0 +1,35 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.container{
+  @include width-height(100%, 100%);
+  @include flex(column, center, flex-end);
+
+  background-color: $DARK_BLUE;
+  color: white;
+
+  .messageContainer {
+    @include flex(column, center, flex-start);
+
+    row-gap: 1rem;
+    height: 70%;
+
+    .message {
+      font-size: $FONT_SIZE_XXL;
+    }
+
+    .link {
+      @include width-height(fit-content, fit-content);
+
+      font-size: $FONT-SIZE_SLIGHTLY_LARGER;
+
+      background-color: $LIGHT_BLUE;
+      padding: 0.7rem;
+      border-radius: 0.7rem;
+
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}

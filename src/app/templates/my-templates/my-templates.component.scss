@@ -1,0 +1,41 @@
+@import "src/styles/config";
+@import "src/styles/mixin-layouts";
+@import "src/styles/mixin-basics";
+
+.container {
+  @include glass-style();
+  @include width-height(100%, 100%);
+
+  padding: $DEFAULT_PAGE_PADDING_LOWER;
+
+  .message {
+    @include width-height(100%, 2rem);
+    @include flex(row, center, flex-start);
+    @include container-title-msg;
+  }
+
+  .cards {
+    @include flex(column, center, none);
+    @include width-height(100%, calc(100% - 2rem));
+    padding-top: $DEFAULT_PAGE_PADDING_LOWER;
+
+    row-gap: 3%;
+
+    .card {
+      @include glass-style();
+      @include width-height(100%, 18%);
+      padding: $DEFAULT_PAGE_PADDING_LOWEST;
+    }
+  }
+
+  .arrowFooter {
+    @include arrow-footer;
+
+    margin-top: auto;
+
+    .arrowContainer {
+      @include width-height(2rem, auto);
+      @include flex(row, center, center)
+    }
+  }
+}

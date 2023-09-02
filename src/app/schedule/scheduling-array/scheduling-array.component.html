@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="bar">
+
+    <div class="date">
+
+      <div class="addButton">
+        <img [src]="imagesPaths.ADD_ICON" class="addButtonIcon" (click)="openAddForm()" *ngIf="hasAuthority && isDateGreaterEqualThanToday()">
+      </div>
+
+      <div [ngClass]=" {'dateText' : isDateSelected(), 'dateTextNoDate' : !isDateSelected()}">
+        <ng-container *ngIf="isDateSelected(); else noDate">
+          {{ selectedDateArray | date:'EEEE, yyyy-MM-dd' }}
+        </ng-container>
+        <ng-template #noDate>
+          Pick a date
+        </ng-template>
+      </div>
+    </div>
+
+  </div>
+  <div class="array">
+    <div>
+      <div *ngFor="let card of displayedCards">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title class="title">{{ card.name }}</mat-card-title>
+
+            <div>
+              <img [src]="imagesPaths.USER_ICON" id="userIcon">
+
+              <span [ngClass]="{ 'user': hasAuthority, 'userNoAuth': !hasAuthority }">{{card.username}}</span>
+            </div>
+
+            <div class="controlPanel" *ngIf="hasAuthority">
+
+              <span *ngIf="card.playing"><img [src]="imagesPaths.PAUSE_ICON" id="pauseIcon" class="pauseIcon" (click)="stop()"></span>
+
+              <span><img [src]="imagesPaths.EDIT_ICON" id="editIcon" [ngClass]="{ 'editIconPlay': card.playing, 'editIconNoPlay': !card.playing }" (click)="openEditForm(card)"></span>
+
+              <span><img [src]="imagesPaths.DELETE_ICON" id="deleteIcon"  class= "deleteIcon" (click)="delete(card.id)"></span>
+
+            </div>
+
+          </mat-card-header>
+          <mat-card-content>
+            <div class="bottomIconsContainer">
+            <div class="alarmOnContainer"><img [src]="imagesPaths.ALARM_ON_ICON" id="alarmOnIcon">{{ card.startTime | date:'HH:mm:ss' }}</div>
+
+            <div class="alarmOffContainer"><img [src]="imagesPaths.ALARM_OFF_ICON" id="alarmOffIcon">{{ card.endTime.getFullYear() === nullDate ? 'Never ends' : card.endTime | date:'MM/dd/YY' }}</div>
+
+            <mat-menu #menu="matMenu" class="menu">
+
+              <div class="cell">
+                <img [src]="imagesPaths.TIMELAPSE_ICON" id="timelapseIcon">
+                <div class="text">
+                  <ng-container *ngIf="card.repetitions === 0; else normalDisplay">
+                    Until the end of day
+                  </ng-container>
+                  <ng-template #normalDisplay>
+                    {{ Math.floor(card.length * card.repetitions/ 60) }} Min {{ card.length * card.repetitions % 60 }} Sec
+                  </ng-template>
+                </div>
+
+              </div>
+
+              <div class="cell">
+              <img [src]="imagesPaths.CYCLE_ICON" id="cycleIcon">
+              <div class="text">Cyclic: {{card.cycle ? 'Yes' : 'No' }}</div>
+              </div>
+
+              <div class="cell">
+              <img [src]="imagesPaths.PLAY_ARROW_ICON" id="playArrowIcon">
+              <div class="text">Playing: {{ card.playing ? 'YES' : 'NO' }}</div>
+              </div>
+
+              <div class="cell">
+              <img [src]="imagesPaths.WEEK_ICON" id="weekIcon">
+              <div class="text">Repeats: {{ card.cycleDays }}</div>
+              </div>
+
+            </mat-menu>
+
+            <div [matMenuTriggerFor]="menu" id="moreText" class="moreContainer"><img [src]="imagesPaths.MORE_ICON" id="moreIcon">More</div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrowFooter" *ngIf="isDateSelected() && this.cardArray.length > this.pageSize">
+    <div class="arrowContainer">
+      <button (click)="onPageChange(-1)" [ngClass]="{ 'disableArrow': this.disableLeftArrow}" [disabled]="this.disableLeftArrow"  mat-icon-button *ngIf="!disableLeftArrow">
+        <mat-icon>arrow_backward</mat-icon>
+      </button>
+    </div>
+
+    <span class="pageIndex">{{ pageIndex + 1 }}</span>
+
+    <div class="arrowContainer">
+      <button (click)="onPageChange(1)" [ngClass]="{ 'disableArrow': this.disableRightArrow}" [disabled]="this.disableRightArrow"  mat-icon-button *ngIf="!disableRightArrow">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="title">
+    <span>{{card?.name}}</span>
+  </div>
+
+  <div class="bottom">
+    <div>
+      <mat-icon>event</mat-icon>
+
+      <span>{{ card?.updatedAt | date : "d/M/yyyy" }}</span>
+    </div>
+
+    <div>
+      <mat-icon>account_circle</mat-icon>
+
+      <span>{{ card?.ownerUsername }}</span>
+    </div>
+
+    <div>
+      <span class="material-symbols-outlined">timer</span>
+
+      <span>{{ card?.length }}s</span>
+    </div>
+  </div>
+</div>

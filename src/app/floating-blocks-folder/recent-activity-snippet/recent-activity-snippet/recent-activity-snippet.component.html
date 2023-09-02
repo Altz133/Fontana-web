@@ -1,0 +1,31 @@
+<div class="recent-activity-container">
+  <div class="recent-activity-list">
+    <div *ngFor="let item of data" class="activity-item">
+      <span [ngClass]="{'marker-owner': isOwner(item.username), 'marker-other': !isOwner(item.username) }" class="marker"></span>
+
+      <p>{{extractDate(item.openedTime)}}</p>
+
+      <div class="activity-wrapper first">
+        <mat-icon class="clock-icon icon">schedule</mat-icon>
+        <p>{{extractTime(item.openedTime)}}</p>
+      </div>
+
+      <div class="activity-wrapper second">
+        <mat-icon class="clock-icon icon">schedule</mat-icon>
+        <p>{{extractTime(item.closedTime)}}</p>
+      </div>
+
+      <div class="activity-wrapper third">
+        <mat-icon class="action-icon icon">touch_app</mat-icon>
+        <p>{{item.logsAmount}}</p>
+      </div>
+
+      <div class="activity-wrapper last">
+        <mat-icon class="user-icon icon">account_circle</mat-icon>
+        <p>{{item.username}}</p>
+      </div>
+
+      <button *ngIf="hasAuthority" mat-raised-button class="show-details-btn"  (click)="handleAdminPanelRedirect()">details</button>
+    </div>
+  </div>
+</div>

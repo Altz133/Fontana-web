@@ -1,0 +1,143 @@
+<div [ngClass]="{'mobile-view': mobileView}" class="container">
+  <div class="fountain-container">
+    <div class="bridge">
+    </div>
+    <div class="pool">
+      <div *ngIf="displayLedBorder()"
+           class="led-border">
+        <div class="led-border-left"></div>
+        <div class="led-white-left"></div>
+        <div class="led-border-right"></div>
+        <div class="led-white-right"></div>
+      </div>
+      <div *ngIf="displayFoamJetContainer()"
+           class="foam-jet-container">
+        <div class="button-container">
+          <img *ngIf="foam1Enabled"
+               [ngClass]="{'enlarged-icon': activeMobileTab==='Foams'&&mobileView}"
+               [src]="imagePaths.FOAM_ICON"
+               alt="Foam Icon"
+               class="foam-icon"
+               id="foam1-icon">
+          <button (click)="foam1Enabled=!foam1Enabled;updateFoam('foam1',foam1Enabled);"
+                  [ngClass]="{'enlarged-button': activeMobileTab==='Foams'&&mobileView}"
+                  aria-label="Foam Jet 1"
+                  class="foam-jet-button"
+                  id="foam1-jet">
+          </button>
+        </div>
+
+        <div class="button-container">
+          <img *ngIf="foam2Enabled"
+               [ngClass]="{'enlarged-icon': activeMobileTab==='Foams'&&mobileView}"
+               [src]="imagePaths.FOAM_ICON"
+               alt="Foam Icon"
+               class="foam-icon"
+               id="foam2-icon">
+          <button (click)="foam2Enabled=!foam2Enabled;updateFoam('foam2',foam2Enabled)"
+                  [ngClass]="{'enlarged-button': activeMobileTab==='Foams'&&mobileView}"
+                  aria-label="Foam Jet 1"
+                  class="foam-jet-button"
+                  id="foam2-jet">
+          </button>
+        </div>
+
+        <div class="button-container">
+          <img *ngIf="foam3Enabled"
+               [ngClass]="{'enlarged-icon': activeMobileTab==='Foams'&&mobileView}"
+               [src]="imagePaths.FOAM_ICON"
+               alt="Foam Icon"
+               class="foam-icon"
+               id="foam3-icon">
+          <button (click)="foam3Enabled=!foam3Enabled;updateFoam('foam3',foam3Enabled)"
+                  [ngClass]="{'enlarged-button': activeMobileTab==='Foams'&&mobileView}"
+                  aria-label="Foam Jet 1"
+                  class="foam-jet-button"
+                  id="foam3-jet">
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="displayAngleJetButtonContainer()"
+           class="angle-jet-button-container">
+        <div class="button-container"
+             [style.transform]="angleJet1Direction === 'left' ? 'right' : 'scaleX(-1)'">
+          <div *ngIf="angleJet1on" [style.width.rem]="beamLevel" class="angle-jet-beam" id="a-beam1"></div>
+          <button (click)="toggleJet('angle',1)"
+                  [style.background-image]="getJetBackground(angleJet1on,'angle')"
+                  aria-label="Angular Jet 1"
+                  class="angle-jet-button"
+                  id="angleJet1">
+          </button>
+        </div>
+
+        <div class="button-container"
+             [style.transform]="angleJet2Direction === 'left' ? 'right' : 'scaleX(-1)'">
+          <div *ngIf="angleJet2on" [style.width.rem]="beamLevel"
+               class="angle-jet-beam"
+               id="a-beam2"></div>
+          <button (click)="toggleJet('angle',2)"
+                  [style.background-image]="getJetBackground(angleJet2on,'angle')"
+                  aria-label="Angular Jet 2"
+                  class="angle-jet-button"
+                  id="angleJet2">
+          </button>
+        </div>
+
+        <div class="button-container"
+             [style.transform]="angleJet3Direction === 'left' ? 'right' : 'scaleX(-1)'">
+          <div *ngIf="angleJet3on" [style.width.rem]="beamLevel"
+               class="angle-jet-beam"
+               id="a-beam3"></div>
+          <button (click)="toggleJet('angle',3)"
+                  [style.background-image]="getJetBackground(angleJet3on,'angle')"
+                  aria-label="Angular Jet 3"
+                  class="angle-jet-button"
+                  id="angleJet3">
+          </button>
+        </div>
+
+        <div class="button-container"
+             [style.transform]="angleJet4Direction === 'left' ? 'right' : 'scaleX(-1)'">
+          <div *ngIf="angleJet4on"
+               [style.width.rem]="beamLevel"
+               class="angle-jet-beam"
+               id="a-beam4"></div>
+          <button (click)="toggleJet('angle',4)"
+                  [style.background-image]="getJetBackground(angleJet4on,'angle')"
+                  aria-label="Angular Jet 4"
+                  class="angle-jet-button"
+                  id="angleJet4">
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="!mobileView" class="vertical-jet-button-container">
+        <div class="button-container">
+          <button (click)="toggleJet('vertical',1)"
+                  [style.background-image]="getJetBackground(verticalJet1on,'vertical')"
+                  aria-label="Vertical Jet 1"
+                  class="vertical-jet-button"
+                  id="verticalJet1">
+          </button>
+        </div>
+
+        <div class="button-container">
+          <button (click)="toggleJet('vertical',2)"
+                  [style.background-image]="getJetBackground(verticalJet2on,'vertical')"
+                  aria-label="Vertical Jet 2"
+                  class="vertical-jet-button"
+                  id="verticalJet2">
+          </button>
+        </div>
+
+        <div class="button-container">
+          <button (click)="toggleJet('vertical',3)"
+                  [style.background-image]="getJetBackground(verticalJet3on,'vertical')"
+                  aria-label="Vertical Jet 3"
+                  class="vertical-jet-button"
+                  id="verticalJet3">
+          </button>
+        </div>
+      </div>
+    </div>

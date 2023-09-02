@@ -1,0 +1,31 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.statusContainer {
+  @include flex(row, center, center);
+  @include width-height(100%, fit-content);
+
+  box-shadow: 0 0 24px -8px rgba(0,0,0,4);
+  backdrop-filter: blur(24px) saturate(100%);
+
+  color: white;
+  border-radius: 1rem;
+  padding: 0.5rem 0.25rem;
+
+  .icon {
+    @include flex(row, center, center);
+
+    width: 25%;
+
+    .material-symbols-outlined {
+      font-size: 2.5rem;
+    }
+  }
+
+  .message {
+    @include flex(row, center, center);
+
+    width: 75%;
+    font-weight: bold;
+  }
+}

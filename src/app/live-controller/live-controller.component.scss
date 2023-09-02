@@ -1,0 +1,77 @@
+@import "src/app/shared/style/images-paths";
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-wrappers";
+@import "src/styles/mixin-layouts";
+
+.live-controller {
+  &.pc-view {
+    @include flex(column, center, center);
+    @include page-container;
+    @include background-water-img;
+
+    .back-button {
+      @include width-height(4.5rem, 4.5rem);
+      @include configured-absolute-pos(0.5rem, 0.8rem);
+
+      z-index: 500;
+      color: white;
+      background-color: $LIGHT_BLUE;
+      border: none;
+      border-radius: 100%;
+      margin-left: $DEFAULT_PAGE_MARGIN;
+      margin-top: $DEFAULT_PAGE_MARGIN_LOWER;
+
+      transition: background-color 0.15s ease;
+
+      &:hover {
+        background-color: rgba($LIGHT_BLUE, $LOW_TRANSPARENCY);
+        cursor: pointer;
+      }
+
+      .back-icon {
+        @include flex(row, center, center);
+        @include width-height(100%, 100%);
+
+        font-size: $FONT_SIZE_PAGE_TITLE_SMALLER;
+      }
+    }
+
+    .upper-section {
+      @include flex(row, flex-start, center);
+
+      z-index: 0;
+    }
+
+    .bottom-section {
+      @include flex(row, flex-start, space-between);
+
+      gap: $DEFAULT_PAGE_MARGIN;
+      width: $FOUNTAIN_CONTAINER_WIDTH;
+      display: flex;
+      justify-content: space-between;
+      height: 42.5vh;
+      z-index: 1;
+      margin: auto;
+
+      .sideview,
+      .configuration {
+        @include glass-style;
+
+        border-radius: $PAGE_RADIUS_DEFAULT;
+
+        -webkit-box-shadow: 0px 2px 19px -12px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 2px 19px -12px rgba(66, 68, 90, 1);
+        box-shadow: 0px 2px 19px -12px rgba(66, 68, 90, 1);
+      }
+
+      .sideview {
+        @include width-height(40%, calc(100% - 2rem));
+      }
+
+      .configuration {
+        @include width-height(60%, calc(100% - 2rem));
+      }
+    }
+  }
+}

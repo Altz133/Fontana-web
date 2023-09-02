@@ -1,0 +1,43 @@
+<div class="modal-wrapper">
+  <h2>Missed User Activity</h2>
+
+  <div class="sessions-header">
+    <label>Sessions ({{sessions[0] === 0 ? '0' : sessions.length}})</label>
+    <mat-checkbox (click)="updateAllSessionsWatcher()">Set all as watched</mat-checkbox>
+  </div>
+
+  <app-loading-spinner *ngIf="sessions.length === 0" class="loading-spinner"></app-loading-spinner>
+
+  <div *ngIf="sessions.length > 0 && sessions[0] != 0" class="session-list">
+    <div *ngFor="let session of sessions" class="session-item">
+      <div class="session-top">
+        <div class="session-info">
+          <mat-icon class="user-icon">account_circle</mat-icon>
+          <p>{{ session.username }}</p>
+        </div>
+        <div class="logs-amount">
+          <div class="actions">
+            <mat-icon class="action-icon">touch_app</mat-icon>
+          </div>
+          <p>{{ session.logsAmount }}</p>
+        </div>
+      </div>
+      <div class="session-bottom">
+        <div class="session-time opened">
+          <mat-icon class="clock-icon">schedule</mat-icon>
+          <p>Opened: {{ formatDate(session.openedTime) }}</p>
+        </div>
+        <div class="session-time closed">
+          <mat-icon class="clock-icon">schedule</mat-icon>
+          <p>Closed: {{ formatDate(session.closedTime) }}</p>
+        </div>
+      </div>
+      <button class="mark-as-watched-button" (click)="updateSingleSessionWatcher(session.id)">
+        <mat-icon class="approve-icon">check_circle</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="sessions[0] === 0" class="empty-list-msg">
+    <p>No items found.</p>
+  </div>
+</div>

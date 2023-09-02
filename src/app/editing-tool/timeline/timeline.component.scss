@@ -1,0 +1,91 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+.timeline-container {
+  display: flex;
+  overflow-x: auto;
+  height: 100%;
+  background-color: $LIGHT_GRAY;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  position: relative;
+  z-index: 1;
+  padding-top: 1.5rem;
+
+
+  .blocks-list {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: flex-end;
+    justify-content: flex-start;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    padding-top: 1.5rem;
+
+    .single-block:hover {
+      cursor: grab;
+    }
+
+    .single-block:hover:active {
+      cursor: grabbing;
+    }
+  }
+
+  .tick {
+    height: 100%;
+
+    .second-label {
+      position: absolute;
+      top: -0.2rem;
+    }
+
+    &.half-second {
+      width: 1rem;
+      border-right: 1px solid $TIMELINE_TICK;
+    }
+
+    &.second {
+      width: 1rem;
+      border-right: 2px solid $TIMELINE_TICK;
+    }
+  }
+
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  cursor: grabbing;
+}
+
+.blocks-list:last-child {
+  border: none;
+}
+
+.blocks-list.cdk-drop-list-dragging .block:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+
+}
+
+.example-custom-placeholder {
+  -webkit-box-shadow: inset 0px 6px 24px -3px rgba(66, 68, 90, 1);
+  -moz-box-shadow: inset 0px 6px 24px -3px rgba(66, 68, 90, 1);
+  box-shadow: inset 0px 6px 24px -3px rgba(66, 68, 90, 1);
+  background: $LIGHT_GRAY;
+  opacity: 0.9;
+  height: 100%;
+  width: 4rem;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

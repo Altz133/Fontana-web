@@ -1,0 +1,228 @@
+<div class="mobile-container" [ngStyle]="{'height': isEditingToolOn ? '100%' : '100vh'}">
+  <mat-tab-group (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Angle Jets">
+      <div class="fountain-container">
+        <app-fountain class="fountain-view">
+        </app-fountain>
+      </div>
+
+      <div class="pump1-slider">
+        <label for="pump1-slider">Angle Jets Power</label>
+        <mat-slider
+          (mouseup)="pumpUp(1)"
+          id="pump1-slider"
+          max="255"
+          min="0">
+          <input
+            (input)="onPump1Change()"
+            [(ngModel)]="pump1Power"
+            matSliderThumb>
+        </mat-slider>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Vertical Jets">
+      <div class="vertical-jets-container">
+        <div class="sideview-container">
+          <app-fountain-sideview></app-fountain-sideview>
+        </div>
+
+        <div class="switches">
+          <div class="custom-switch">
+            <input (change)="updateVerticalJets(1)"
+                   [(ngModel)]="verticalJet1on"
+                   id="jetSwitch1"
+                   type="checkbox">
+            <label class="slider" for="jetSwitch1"></label>
+          </div>
+
+          <div class="custom-switch">
+            <input (change)="updateVerticalJets(2)"
+                   [(ngModel)]="verticalJet2on"
+                   id="jetSwitch2"
+                   type="checkbox">
+            <label class="slider" for="jetSwitch2"></label>
+          </div>
+
+          <div class="custom-switch">
+            <input (change)="updateVerticalJets(3)"
+                   [(ngModel)]="verticalJet3on"
+                   id="jetSwitch3"
+                   type="checkbox">
+            <label class="slider" for="jetSwitch3"></label>
+          </div>
+        </div>
+
+        <div class="pump2-slider">
+          <label for="pump2-slider">Vertical Jets Power</label>
+          <mat-slider
+            (mouseup)="pumpUp(2)"
+            id="pump2-slider"
+            max="255"
+            min="0">
+            <input
+              (input)="onPump2Change()"
+              [(ngModel)]="pump2Power"
+              matSliderThumb>
+          </mat-slider>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Foams">
+      <div class="fountain-container">
+        <app-fountain class="fountain-view">
+        </app-fountain>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="LEDs strip">
+      <div class="fountain-container">
+        <app-fountain class="fountain-view">
+        </app-fountain>
+      </div>
+
+      <mat-tab-group>
+        <mat-tab label="Color">
+          <div class="strip-options">
+            <div class="color-picker">
+              <label for="color-picker">LED Color:</label>
+              <input
+                (input)="updateBorderColor()"
+                (change)="sendLedUpdate()"
+                [(ngModel)]="ledStripColor"
+                id="color-picker"
+                type="color">
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Brightness">
+          <div class="strip-options">
+            <div class="led-power-slider">
+              <label for="led-power-slider">Choose LED brightness:</label>
+              <mat-slider
+                id="led-power-slider"
+                max="255"
+                min="0">
+                <input
+                  (input)="updateSquareOpacity()"
+                  (mouseup)="sendLedUpdate()"
+                  [(ngModel)]="ledPower"
+                  matSliderThumb>
+              </mat-slider>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="White Brightness">
+          <div class="strip-options">
+            <label for="white-brightness-slider">Choose white LED brightness:</label>
+            <mat-slider
+              id="white-brightness-slider"
+              max="255"
+              min="0">
+              <input
+                (input)="updateWhiteBrightness()"
+                (mouseup)="sendLedUpdate()"
+                [(ngModel)]="whiteBrightness"
+                matSliderThumb>
+            </mat-slider>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="stroboscope">
+          <div class="strip-options">
+            <div class="stroboscope-control">
+              <label for="stroboscope-checkbox">Enable Stroboscope:</label>
+              <input
+                (change)="updateStroboscope()"
+                [(ngModel)]="stroboscopeEnabled"
+                id="stroboscope-checkbox"
+                type="checkbox">
+
+              <div *ngIf="stroboscopeEnabled">
+                <label for="stroboscope-frequency">Stroboscope Frequency:</label>
+                <mat-slider
+                  id="stroboscope-frequency"
+                  max="255"
+                  min="0">
+                  <input
+                    (input)="updateStroboscope()"
+                    (mouseup)="sendLedUpdate();"
+                    [(ngModel)]="stroboscopeFrequency"
+                    matSliderThumb>
+                </mat-slider>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
+
+    <mat-tab label="Circular LEDs">
+      <div class="sideview-container">
+        <app-fountain-sideview></app-fountain-sideview>
+      </div>
+
+      <mat-tab-group>
+        <mat-tab label="Color 1">
+          <div class="color-picker-container">
+            <label for="color-picker1">Color for light 1:</label>
+            <input
+              (input)="lightColorChange(1)"
+              (change)="lightColorUp(1)"
+              [(ngModel)]="lightColor1"
+              id="color-picker1"
+              type="color">
+            <div class="custom-switch">
+              <input (change)="lightColorChange(1)"
+                     [(ngModel)]="lightValue1"
+                     id="mySwitch1"
+                     type="checkbox">
+              <label class="slider" for="mySwitch1"></label>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Color 2">
+          <div class="color-picker-container">
+            <label for="color-picker2">Color for light 2:</label>
+            <input
+              (input)="lightColorChange(2)"
+              (change)="lightColorUp(2)"
+              [(ngModel)]="lightColor2"
+              id="color-picker2"
+              type="color">
+            <div class="custom-switch">
+              <input (change)="lightColorChange(2)"
+                     [(ngModel)]="lightValue2"
+                     id="mySwitch2"
+                     type="checkbox">
+              <label class="slider" for="mySwitch2"></label>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Color 3">
+          <div class="color-picker-container">
+            <label for="color-picker3">Color for light 3:</label>
+            <input
+              (input)="lightColorChange(3)"
+              (change)="lightColorUp(3)"
+              [(ngModel)]="lightColor3"
+              id="color-picker3"
+              type="color">
+            <div class="custom-switch">
+              <input (change)="lightColorChange(3)"
+                     [(ngModel)]="lightValue3"
+                     id="mySwitch3"
+                     type="checkbox">
+              <label class="slider" for="mySwitch3"></label>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</div>

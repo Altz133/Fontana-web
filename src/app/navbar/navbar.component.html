@@ -1,0 +1,45 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+<nav>
+  <h1 (click)="handleDashboardRedirection()" class="title">FOИTAИA</h1>
+
+  <div class="right">
+    <div *ngIf="menuOn" class="menu-container">
+      <button [matMenuTriggerFor]="menu" mat-button><mat-icon class="menu-icon">menu</mat-icon></button>
+      <mat-menu #menu="matMenu" class="mat-menu-container">
+        <div class="menu-links">
+          <button [routerLink]="'/templates'" class="navElement" mat-menu-item><span
+            class="material-icons">extension</span>
+            <p>Templates</p></button>
+          <button [routerLink]="'/schedules'" class="navElement" mat-menu-item><span class="material-icons">calendar_month</span>
+            <p>Schedules</p></button>
+          <button *ngIf="hasAuthority" [routerLink]="'/liveControl'" class="navElement" mat-menu-item><span class="material-icons">data_thresholding</span>
+            <p>Live control</p></button>
+          <button [routerLink]="'/editingTool'" class="navElement" mat-menu-item><span class="material-icons">view_timeline</span>
+            <p>Editing tool</p></button>
+          <button (click)="logout()" [routerLink]="'/logout'" class="logout" mat-menu-item><span class="material-icons">logout</span>
+            <p>Logout</p></button>
+        </div>
+      </mat-menu>
+    </div>
+    <div *ngIf="!menuOn" class="navigation-links">
+      <a [routerLink]="'/templates'" class="navElement"><span class="material-icons">extension</span>
+        <p>Templates</p></a>
+      <a [routerLink]="'/schedules'" class="navElement"><span class="material-icons">calendar_month</span>
+        <p>Schedules</p></a>
+      <a *ngIf="hasAuthority" [routerLink]="'/liveControl'" class="navElement"><span class="material-icons">data_thresholding</span>
+        <p>Live control</p>
+      </a>
+      <a [routerLink]="'/editingTool'" class="navElement"><span class="material-icons">view_timeline</span>
+        <p>Editing tool</p></a>
+      <a (click)="logout()" [routerLink]="'/logout'" class="logout"><span class="material-icons">logout</span>
+        <p>Logout</p></a>
+    </div>
+  </div>
+</nav>
+
+<app-loading-bar *ngIf="isRedirecting"></app-loading-bar>
+

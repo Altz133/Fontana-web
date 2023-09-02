@@ -1,0 +1,278 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+
+$smallHeight: 650px;
+
+.configuration-panel {
+  border-radius: $PAGE_RADIUS_LOWEST $PAGE_RADIUS_LOWEST 0 0;
+  overflow: hidden;
+  height: 100%;
+  padding: $DEFAULT_PAGE_PADDING_LOWEST;
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: calc(100vh - 60px);
+    overflow: auto;
+
+    #color-picker {
+      grid-area: 1 / 1 / 3 / 2;
+    }
+
+    #led-power-slider {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+
+    #white-brightness-slider {
+      grid-area: 2 / 2 / 3 / 3;
+      left: 1vw;
+      width: 70%;
+      cursor: pointer;
+    }
+
+    #stroboscope-checkbox {
+      grid-area: 1 / 3 / 2 / 4;
+    }
+
+    #stroboscope-frequency {
+      grid-area: 2 / 3 / 3 / 4;
+      width: 65%;
+      margin-left: 1.5rem;
+    }
+
+    .color-picker {
+      text-align: center;
+    }
+
+    .color-picker,
+    .led-power-slider,
+    .stroboscope-control {
+
+      label {
+        display: block;
+        margin: 0.4rem 0 0.4rem $DEFAULT_PAGE_PADDING_LOWER;
+        font-weight: normal;
+        text-align: left;
+      }
+
+      input[type="checkbox"] {
+        @include width-height(1.25rem, 1.25rem);
+
+        margin-left: 1vw;
+        background-color: #2596be;
+      }
+
+      input[type="color"] {
+        @include width-height(80%, 45%);
+      }
+
+      .stroboscope-frequency {
+        height: 50px;
+        overflow: hidden;
+      }
+
+      #led-power-slider {
+        left: 1vw;
+        width: 70%;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .pump-tree {
+    label[for="pump1-slider"], label[for="pump2-slider"] {
+      position: absolute;
+      top: 15%;
+    }
+
+    label[for="pump1-slider"] {
+      left: 8rem;
+    }
+
+    label[for="pump2-slider"] {
+      right: 7.5rem;
+    }
+
+    #pump1-slider {
+      left: 6rem;
+    }
+
+    #pump2-slider {
+      right: 6rem;
+    }
+
+    #pump1-slider, #pump2-slider {
+      position: absolute;
+      top: 20%;
+      width: 10rem;
+    }
+
+    #pump2-icon, #pump1-icon {
+      height: 10rem;
+      margin-top: $DEFAULT_PAGE_MARGIN_LOWEST;
+    }
+
+    #pump2-icon {
+      position: absolute;
+      right: 0;
+      transform: scaleX(-1);
+    }
+  }
+
+  .light-tree .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    text-align: center;
+
+    .color-picker-container {
+      text-align: center;
+      height: 30vh;
+
+      input[type="color"] {
+        margin-top: 0.4rem;
+        height: 50%;
+        width: 80%;
+        cursor: pointer;
+      }
+
+
+      .custom-switch {
+        @include width-height(3.9rem, 2.15rem);
+
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 20%);
+      }
+
+      .custom-switch input {
+        @include width-height(0, 0);
+
+        opacity: 0;
+      }
+
+      .slider {
+        @include configured-absolute-pos(0, 0);
+
+        cursor: pointer;
+        right: 0;
+        bottom: 0;
+        background-color: red;
+        transition: .4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        @include configured-absolute-pos(0.2rem, 0.25rem);
+        @include width-height(1.7rem, 1.7rem);
+
+        content: "";
+        bottom: 0.25rem;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #2196F3;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(1.7rem);
+      }
+    }
+
+  }
+}
+
+@media (max-height: 550px) {
+  .configuration-panel {
+    .content {
+      .color-picker,
+      .led-power-slider,
+      .stroboscope-control {
+
+        label {
+          display: block;
+          margin-bottom: 0;
+          margin-left: 1vw;
+          margin-top: 5px;
+        }
+
+        label[for="white-brightness-slider"] {
+          transform: translateY(-2.4rem);
+        }
+
+        #stroboscope-frequency {
+          height: 50px;
+          top: -1rem;
+        }
+
+        #led-power-slider {
+          left: 1vw;
+          width: 70%;
+          cursor: pointer;
+          top: -1rem;
+        }
+
+        #white-brightness-slider {
+          transform: translateY(-3rem);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  @media (max-height: $smallHeight) {
+    .configuration-panel {
+      .content {
+        .color-picker,
+        .led-power-slider,
+        .stroboscope-control {
+
+          label {
+            display: block;
+            margin-bottom: 0;
+            margin-left: 1vw;
+            margin-top: 5px;
+          }
+
+          label[for="white-brightness-slider"] {
+            transform: translateY(-2.3rem);
+          }
+
+          input[type="color"] {
+            width: 90%;
+            height: 35%;
+          }
+
+          input[type="checkbox"] {
+            margin-left: 1vw;
+            width: 20px;
+            height: 20px;
+            background-color: #2596be;
+          }
+
+          #stroboscope-frequency {
+            height: 50px;
+            top: -1rem;
+          }
+
+          #led-power-slider {
+            left: 1vw;
+            width: 70%;
+            cursor: pointer;
+            top: -1rem;
+          }
+
+          #white-brightness-slider {
+            transform: translateY(-3rem);
+          }
+        }
+      }
+    }
+  }
+}

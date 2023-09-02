@@ -1,0 +1,37 @@
+
+  <div class="logs-header">
+    <div class="table-header">ID</div>
+    <div class="table-header">Session ID</div>
+    <div class="table-header">User</div>
+    <div class="table-header">Executed At</div>
+    <div class="table-header">Device Type</div>
+    <div class="table-header">Device Name</div>
+    <div class="table-header">Device Value</div>
+  </div>
+  <div class="table-container">
+  <div class="logs-container">
+    <table>
+      <tbody>
+      <tr *ngFor="let log of logs">
+        <td>{{ log.id }}</td>
+        <td>{{ log.sessionId }}</td>
+        <td>{{ log.username }}</td>
+        <td>
+          <div>{{ log.executedAt | date:'shortDate' }}</div>
+          <div>{{ log.executedAt | date:'shortTime' }}</div>
+        </td>
+        <td>{{ log.deviceType }}</td>
+        <td>{{ log.deviceName }}</td>
+        <td>{{ log.deviceValue }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination">
+    <mat-icon *ngIf="currentPage >= 1" class="pagination-arrow" (click)="prevPage()">arrow_backward</mat-icon>
+    <span>{{ currentPage + 1 }} / {{ totalPages }}</span>
+    <mat-icon *ngIf="currentPage < totalPages" class="pagination-arrow" (click)="nextPage()">arrow_forward</mat-icon>
+  </div>
+  <button class="btn download" (click)="downloadLogs()" color="primary" mat-raised-button>Download Logs</button>
+
+</div>

@@ -1,0 +1,27 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.bar {
+  @include flex(row, center, flex-start);
+  @include container-title-msg;
+
+  border-top-left-radius: $PAGE_RADIUS_DEFAULT;
+  border-top-right-radius: $PAGE_RADIUS_DEFAULT;
+
+  column-gap: 1rem;
+
+  .material-icons{
+    font-size: $FONT_SIZE_XL;
+  }
+
+  .move{
+    margin-left: auto;
+
+    &:hover{
+      color: $CARD_BLUE;
+      transform: translateY(-5%);
+      cursor: pointer;
+    }
+  }
+}

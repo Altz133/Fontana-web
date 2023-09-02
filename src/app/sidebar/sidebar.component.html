@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+
+<div class="container">
+  <div class="upper-container">
+    <app-hello></app-hello>
+    <app-notifications *ngIf="isAdmin"></app-notifications>
+  </div>
+  <div class="weather-container">
+    <app-weather></app-weather>
+    <app-status></app-status>
+  </div>
+  <div *ngIf="isAdmin" class="panic-container">
+    <app-panic-button></app-panic-button>
+  </div>
+  <div class="bottom-container">
+    <img alt="logo NCDC" class="logoNCDC" src="assets/ncdc/logo.png">
+    <app-settings *ngIf="isAdmin && shouldDisplaySettings"></app-settings>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<span *ngIf="!isRedirecting" class="material-icons" (click)="navigateToAdminPanel()">settings</span>
+
+<span>
+  <app-loading-spinner *ngIf="isRedirecting"></app-loading-spinner>
+</span>

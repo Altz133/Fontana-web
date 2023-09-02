@@ -1,0 +1,53 @@
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.cardContainer {
+  @include width-height(100%, 100%);
+  @include flex(row, center, flex-start);
+  @include glass-style();
+
+  padding: 0.1rem 0;
+  overflow: hidden;
+
+  .DRAFT{
+    @include width-height(0.65rem, 100%);
+    background-color: $ORANGE;
+  }
+
+  .content {
+    @include width-height(calc(100% - 0.65rem), 100%);
+    @include flex(row, center, center);
+
+    padding: $DEFAULT_PAGE_PADDING_LOWEST;
+
+    .left {
+      @include width-height(33%, 100%);
+      @include flex(row, center, start);
+
+      .title {
+        @include flex(row, center, start);
+        column-gap: 0.5rem;
+      }
+    }
+
+    .center {
+      @include width-height(33%, 100%);
+      @include flex(row, center, center);
+
+      .date {
+        @include flex(row, center, start);
+        column-gap: 0.5rem;
+      }
+    }
+
+    .right {
+      @include width-height(33%, 100%);
+      @include flex(row, center, end);
+
+      .time {
+        @include flex(row, center, start);
+        column-gap: 0.5rem;
+      }
+    }
+  }
+}

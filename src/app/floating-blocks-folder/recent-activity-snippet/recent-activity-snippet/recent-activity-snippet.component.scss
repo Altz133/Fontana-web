@@ -1,0 +1,84 @@
+@import "src/styles/config";
+@import "src/styles/mixin-basics";
+@import "src/styles/mixin-layouts";
+
+.recent-activity-container {
+  @include width-height(100%, 100%);
+
+  .recent-activity-list {
+    @include flex(column, flex-start, flex-start);
+    @include width-height(inherit, inherit);
+
+    gap: $DEFAULT_PAGE_MARGIN_LOWEST;
+
+    .activity-item {
+      @include width-height(100%, 30%);
+      @include flex(row, center, flex-start);
+      @include glass-style;
+
+      padding: 0.1rem 0;
+      overflow: hidden;
+
+      .marker-owner, .marker-other {
+        @include width-height(0.65rem, 100%);
+      }
+
+      .marker-owner {
+        background-color: $GREEN;
+      }
+
+      .marker-other {
+        background-color: $CARD_BLUE;
+      }
+
+      .activity-wrapper {
+        @include flex(row,center, flex-start);
+
+        p {
+          transform: translateY(0.37rem);
+        }
+
+        .icon {
+          transform: scale(0.75);
+        }
+      }
+
+      p:first-of-type {
+        transform: translateY(0.37rem);
+        width: 15%;
+        margin-left: 0.5rem;
+      }
+
+      .first {
+        width: 13.5%;
+      }
+
+      .second {
+        width: 13.5%;
+      }
+
+      .third {
+        width: 10%;
+      }
+
+      .last {
+        width: 27.5%;
+      }
+
+      .show-details-btn {
+        @include width-height(16%,70%);
+
+        background-color: $LIGHT_BLUE;
+        cursor: pointer;
+        color: white;
+        font-weight: lighter;
+
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: $CARD_BLUE;
+        }
+      }
+    }
+  }
+}
