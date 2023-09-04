@@ -26,6 +26,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## Created by:
+
+[xNikodem](https://github.com/xNikodem)
+[Sombolm](https://github.com/Sombolm)
+[SojerSM](https://github.com/SojerSM)
+[WeroProgramista](https://github.com/WeroProgramista)
+[Deema-u](https://github.com/Deema-u)
+[Altz133](https://github.com/Altz133)
+
 ## Ownership
 
 This application is owned by: [NCDC](https://ncdc.eu)
