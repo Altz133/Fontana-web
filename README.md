@@ -28,12 +28,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Created by:
 
-[xNikodem](https://github.com/xNikodem)
-[Sombolm](https://github.com/Sombolm)
-[SojerSM](https://github.com/SojerSM)
-[WeroProgramista](https://github.com/WeroProgramista)
-[Deema-u](https://github.com/Deema-u)
-[Altz133](https://github.com/Altz133)
+- [xNikodem](https://github.com/xNikodem)
+- [Sombolm](https://github.com/Sombolm)
+- [SojerSM](https://github.com/SojerSM)
+- [WeroProgramista](https://github.com/WeroProgramista)
+- [Deema-u](https://github.com/Deema-u)
+- [Altz133](https://github.com/Altz133)
 
 ## Ownership
 
